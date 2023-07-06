@@ -139,7 +139,6 @@ if __name__ == '__main__':
    arab = Entity(scale=.028, rotation=(-90, 0, 0))
    actor = Actor("assets/models/t.glb")
    actor.reparentTo(arab)
-   map = Entity(scale=1, collider='mesh', position=Vec3(0, -10, 0))
    arab.hide()
 
    app.run()
