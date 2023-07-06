@@ -47,7 +47,7 @@ data = {
 }
 
 player_data = {
-   "nikname": "user"
+   "nickname": "user"
 }
 
 def input(key):
@@ -113,7 +113,7 @@ def send_data():
    global weapon
 
    data["socket"]["id"] = sio.sid
-   data["player"]["name"] = player_data["nikname"]
+   data["player"]["name"] = player_data["nickname"]
 
    data["data"]["dir"] = player.rotation_y + 180
    data["data"]["cord"]["x"] = player.x
