@@ -30,12 +30,12 @@ players = []
 
 data = {
    "socket": {
-      "id": "",
-      "count": 0
+      "id": ""
    },
    "player": {
-      "name": "",
-      "team": ""
+      "team": "",
+      "nickname": "",
+      "color": ""
    },
    "data": {
       "dir": 0,
@@ -46,10 +46,6 @@ data = {
          "z": 0
       }
    }
-}
-
-player_data = {
-   "nickname": "user"
 }
 
 def input(key):
@@ -91,28 +87,29 @@ def get_data(data):
 
    rot = decoded_data["data"]["dir"]
 
-   # print(Fore.GREEN + "GET", Fore.WHITE)
+   text.position = Vec3(phantom_x, phantom_y + 2.45, phantom_z)
+
+   print(Fore.GREEN + "GET", Fore.WHITE)
 
 @sio.on('new')
 def new_conn(player_count):
    arab.show()
+   text.show()
 
 @sio.on('del')
 def dis_conn(player_count):
    arab.hide()
+   text.hide()
 
 def send_data():
    global weapon
 
    data["socket"]["id"] = sio.sid
-   data["player"]["name"] = player_data["nickname"]
 
    data["data"]["dir"] = player.rotation_y + 180
 
    if (player.rotation_y > 360 or player.rotation_y < -360):
       player.rotation_y = 0
-
-   print(player.rotation_y)
 
    data["data"]["cord"]["x"] = player.x
    data["data"]["cord"]["y"] = player.y
@@ -120,7 +117,7 @@ def send_data():
    data["data"]["weapon"] = weapon
 
    sio.emit('client_data', json.dumps(data))
-   # print("POST")
+   print("POST")
 
 if __name__ == '__main__':
    player = FirstPersonController()
@@ -128,9 +125,27 @@ if __name__ == '__main__':
    start_thread = threading.Thread(target=start_client)
    get_thread = threading.Thread(target=get_data)
    update_thread = threading.Thread(target=update)
+   send_thread = threading.Thread(target=send_data)
+
    start_thread.start()
    get_thread.start()
    update_thread.start()
+   send_thread.start()
+
+   with open("settings.json", "r") as file:
+      parsed_data = json.load(file)
+
+   data["player"]["team"] = parsed_data["settings"]["team"]
+   data["player"]["nickname"] = parsed_data["settings"]["nickname"]
+   data["player"]["color"] = parsed_data["settings"]["color"]
+
+   if data["player"]["color"] == 'green': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.green)
+   elif data["player"]["color"] == 'red': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.red)
+   elif data["player"]["color"] == 'yellow': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.yellow)
+   elif data["player"]["color"] == 'orange': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.orange)
+   elif data["player"]["color"] == 'blue': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.blue)
+   else: text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.white)
+
    Sky()
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
@@ -138,6 +153,7 @@ if __name__ == '__main__':
    actor = Actor("assets/models/t.glb")
    actor.reparentTo(arab)
    arab.hide()
+   text.hide()
 
    app.run()
 
