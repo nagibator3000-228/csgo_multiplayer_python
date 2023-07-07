@@ -91,17 +91,7 @@ def get_data(data):
 
    rot = decoded_data["data"]["dir"]
 
-   print(Fore.GREEN + "GET", Fore.WHITE)
-
-@sio.on("players")
-def new_player(data):
-   decoded_data = json.loads(data)
-   if decoded_data["count"] >= 1:
-      id = decoded_data["id"]
-      arab = Entity(scale=.028, rotation=(-90, 0, 0))
-      actor = Actor("assets/models/t.glb")
-      actor.reparentTo(arab)
-      arab.name = str(id)
+   # print(Fore.GREEN + "GET", Fore.WHITE)
 
 @sio.on('new')
 def new_conn(player_count):
@@ -118,13 +108,19 @@ def send_data():
    data["player"]["name"] = player_data["nickname"]
 
    data["data"]["dir"] = player.rotation_y + 180
+
+   if (player.rotation_y > 360 or player.rotation_y < -360):
+      player.rotation_y = 0
+
+   print(player.rotation_y)
+
    data["data"]["cord"]["x"] = player.x
    data["data"]["cord"]["y"] = player.y
    data["data"]["cord"]["z"] = player.z
    data["data"]["weapon"] = weapon
 
    sio.emit('client_data', json.dumps(data))
-   print("POST")
+   # print("POST")
 
 if __name__ == '__main__':
    player = FirstPersonController()
