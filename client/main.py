@@ -26,6 +26,8 @@ rot = 0
 
 weapon = None
 
+players = []
+
 data = {
    "socket": {
       "id": "",
