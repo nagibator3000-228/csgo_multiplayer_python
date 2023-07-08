@@ -87,7 +87,7 @@ def get_data(data):
 
    rot = decoded_data["data"]["dir"]
 
-   text.position = Vec3(phantom_x, phantom_y + 2.45, phantom_z)
+   text.position = Vec3(phantom_x, phantom_y + 2.25, phantom_z)
 
    print(Fore.GREEN + "GET", Fore.WHITE)
 
