@@ -10,8 +10,6 @@ app.use(cors());
 
 "use strict";
 
-const batFilePath = path.join('../back-up.bat');
-
 var sockets = {
    sockets: [],
    count_of_sockets: 0
@@ -23,14 +21,14 @@ setInterval(() => {
    console.log(`\nauto log [${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets.sockets: ", sockets.sockets, "\nauto log " + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
 }, 60 * 1 * 1000);
 
+const back_up_file = path.join('../back-up.bat');
 setInterval(() => {
-   exec(batFilePath, (error, stdout, stderr) => {
+   exec(back_up_file, (error, stdout, stderr) => {
       if (error) {
-         console.error(`Ошибка выполнения файла .bat: ${error}`);
+         console.error(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + `\u001b[31mError to back up | ${error} | \u001b[0m`);
          return;
       }
-      console.log(`Стандартный вывод: ${stdout}`);
-      console.error(`Стандартный вывод ошибок: ${stderr}`);
+      console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "\u001b[32msuccesfull loaded data in back-up\u001b[0m");
    });
 }, 1 * 1000);
 
