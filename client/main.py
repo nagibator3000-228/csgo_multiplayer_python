@@ -134,17 +134,16 @@ if __name__ == '__main__':
 
    with open("settings.json", "r") as file:
       parsed_data = json.load(file)
+      data["player"]["team"] = parsed_data["settings"]["team"]
+      data["player"]["nickname"] = parsed_data["settings"]["nickname"]
+      data["player"]["color"] = parsed_data["settings"]["color"]
 
-   data["player"]["team"] = parsed_data["settings"]["team"]
-   data["player"]["nickname"] = parsed_data["settings"]["nickname"]
-   data["player"]["color"] = parsed_data["settings"]["color"]
-
-   if data["player"]["color"] == 'green': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.green)
-   elif data["player"]["color"] == 'red': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.red)
-   elif data["player"]["color"] == 'yellow': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.yellow)
-   elif data["player"]["color"] == 'orange': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.orange)
-   elif data["player"]["color"] == 'blue': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.blue)
-   else: text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=4.8, color=color.white)
+      if data["player"]["color"] == 'green': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3, color=color.green)
+      elif data["player"]["color"] == 'red': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.red)
+      elif data["player"]["color"] == 'yellow': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.yellow)
+      elif data["player"]["color"] == 'orange': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.orange)
+      elif data["player"]["color"] == 'blue': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.blue)
+      else: text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.white)
 
    Sky()
 
