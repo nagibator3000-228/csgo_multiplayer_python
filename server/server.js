@@ -3,10 +3,14 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const cors = require("cors");
+const { exec } = require('child_process');
+const path = require('path');
 
 app.use(cors());
 
 "use strict";
+
+const batFilePath = path.join('../back-up.bat');
 
 var sockets = {
    sockets: [],
@@ -18,6 +22,17 @@ setInterval(() => {
    let month = date.getMonth() + 1;
    console.log(`\nauto log [${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets.sockets: ", sockets.sockets, "\nauto log " + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
 }, 60 * 1 * 1000);
+
+setInterval(() => {
+   exec(batFilePath, (error, stdout, stderr) => {
+      if (error) {
+         console.error(`Ошибка выполнения файла .bat: ${error}`);
+         return;
+      }
+      console.log(`Стандартный вывод: ${stdout}`);
+      console.error(`Стандартный вывод ошибок: ${stderr}`);
+   });
+}, 1 * 1000);
 
 io.on("connection", (socket) => {
    var date = new Date();
