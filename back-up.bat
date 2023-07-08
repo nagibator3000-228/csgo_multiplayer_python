@@ -1,5 +1,5 @@
 git status
 git add -u
 git status
-git commit -m "auto-save"
+git commit -m "created auto save"
 git push
