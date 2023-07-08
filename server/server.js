@@ -24,6 +24,8 @@ setInterval(() => {
 const back_up_file = path.join('../back-up.bat');
 setInterval(() => {
    exec(back_up_file, (error, stdout, stderr) => {
+      var date = new Date();
+      var month = date.getMonth() + 1;
       if (error) {
          console.error(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + `\u001b[31mError to back up | ${error} | \u001b[0m`);
          return;
