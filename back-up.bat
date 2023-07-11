@@ -1,5 +1,5 @@
 git status
 git add -u
 git status
-git commit -m "better player spawn"
+git commit -m "room id upate"
 git push        
