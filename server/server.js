@@ -67,8 +67,10 @@ io.on("connection", (socket) => {
       try {
          let parsed_data = JSON.parse(data);
          socket.join(parsed_data.socket.room);
-         if (sockets.count_of_sockets >= 2) {
-            io.emit("new", sockets.count_of_sockets)
+         const room = io.sockets.adapter.rooms.get(parsed_data.socket.room);
+         const playerCount = room ? room.size : 0;
+         if (playerCount >= 2) {
+            io.in(parsed_data.socket.room).emit('new', sockets.count_of_sockets);
          }
       } catch (e) {
          console.error(new Error(`Error 502 | ${e}`));

@@ -6,7 +6,7 @@
    },
    "global": {
       "connection": {
-         "room_id": "csgo:0"
+         "room_password": ""
       }
    }
 }
