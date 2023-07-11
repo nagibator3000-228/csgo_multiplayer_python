@@ -1,5 +1,5 @@
 git status
 git add -u
 git status
-git commit -m "room id upate"
+git commit -m "controll - sit"
 git push        

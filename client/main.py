@@ -18,6 +18,9 @@ window.fullscreen = False
 
 flag = False
 data_flag = False
+sit_flag = False
+
+render_sit_flag = False
 
 join_flag = False
 
@@ -59,6 +62,7 @@ def update():
    global phantom_y
    global phantom_z
    global rot
+   global render_sit_flag
 
    join_room()
    send_data()
@@ -66,7 +70,27 @@ def update():
    arab.position = Vec3(phantom_x, phantom_y, phantom_z)
    arab.rotation = (-90, rot, 0)
 
+   if held_keys['left control'] and sit_flag == False:
+      sit()
+      render_sit_flag = False
+   else:
+      stay()
+      render_sit_flag = True
+
    # print(phantom_x, phantom_y, phantom_z)
+
+def sit():
+   player.camera_pivot.y = 2 - held_keys['left control']
+   player.height = 2 - held_keys['left control']
+   player.speed = 2
+
+def stay():
+   ray = raycast(origin=camera.world_position, direction=Vec3(0, 1, 0), distance=1, ignore=[camera, player])
+
+   if (not ray.hit):
+      player.camera_pivot.y = 2 - held_keys['left control']
+      player.height = 2 - held_keys['left control']
+      player.speed = 5
 
 def start_client():
    sio.connect('http://192.168.178.50:3000')
@@ -114,6 +138,7 @@ def join_room():
 
 def send_data():
    global weapon
+   global render_sit_flag
 
    data["socket"]["id"] = sio.sid
 
@@ -122,8 +147,12 @@ def send_data():
    if (player.rotation_y > 360 or player.rotation_y < -360):
       player.rotation_y = 0
 
+   if (render_sit_flag):
+      data["data"]["cord"]["y"] = player.y
+   else:
+      data["data"]["cord"]["y"] = player.y - 1.2
+
    data["data"]["cord"]["x"] = player.x
-   data["data"]["cord"]["y"] = player.y
    data["data"]["cord"]["z"] = player.z
    data["data"]["weapon"] = weapon
 
