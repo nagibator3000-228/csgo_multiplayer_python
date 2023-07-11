@@ -1,10 +1,13 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const http = require("http").createServer(app);
-const io = require("socket.io")(http);
-const cors = require("cors");
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+const cors = require('cors');
 const { exec } = require('child_process');
 const path = require('path');
+
+// const Redis = require('ioredis');
+// const redis = new Redis();
 
 app.use(cors());
 
@@ -16,6 +19,18 @@ var sockets = {
    sockets: [],
    count_of_sockets: 0
 };
+
+// async function getCachedData(key) {
+//    let cachedData = await redis.get(key);
+//    if (cachedData) {
+//       return JSON.parse(cachedData);
+//    }
+//    return null;
+// }
+
+// function cacheData(key, data, expireation) {
+//    redis.setex(key, expireation, data);
+// }
 
 setInterval(() => {
    let date = new Date();
@@ -58,10 +73,16 @@ io.on("connection", (socket) => {
       }
    }, 1200);
 
+   socket.on("join", (data) => {
+      let parsed_data = JSON.parse(data);
+      socket.join(parsed_data.socket.room);
+   });
+
    socket.on("client_data", async (data) => {
       if (sockets.count_of_sockets >= 2) {
          try {
-            socket.broadcast.emit("server_res", data);
+            let parsed_data = JSON.parse(data);
+            socket.broadcast.to(parsed_data.socket.room).emit('server_res', JSON.stringify(parsed_data));
          } catch (e) {
             console.error(new Error(`Error 502 | ${e}`));
          }
@@ -78,7 +99,7 @@ io.on("connection", (socket) => {
          sockets.sockets.splice(index, 1);
       }
       try {
-         socket.emit("del", sockets.count_of_sockets);
+         io.emit("del", sockets.count_of_sockets);
       } catch (e) {
          console.error(new Error(`Error 502 | ${e}`));
       }

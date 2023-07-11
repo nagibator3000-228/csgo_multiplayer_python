@@ -19,6 +19,8 @@ window.fullscreen = False
 flag = False
 data_flag = False
 
+join_flag = False
+
 phantom_x = 0
 phantom_y = 0
 phantom_z = 0
@@ -30,7 +32,8 @@ players = []
 
 data = {
    "socket": {
-      "id": ""
+      "id": "",
+      "room": ""
    },
    "player": {
       "team": "",
@@ -57,6 +60,7 @@ def update():
    global phantom_z
    global rot
 
+   join_room()
    send_data()
 
    arab.position = Vec3(phantom_x, phantom_y, phantom_z)
@@ -101,6 +105,13 @@ def dis_conn(player_count):
    arab.hide()
    text.hide()
 
+def join_room():
+   global join_flag
+
+   if (not join_flag):
+      sio.emit("join", json.dumps(data))
+      join_flag = True
+
 def send_data():
    global weapon
 
@@ -122,6 +133,8 @@ def send_data():
 if __name__ == '__main__':
    player = FirstPersonController()
 
+   Sky()
+
    start_thread = threading.Thread(target=start_client)
    get_thread = threading.Thread(target=get_data)
    update_thread = threading.Thread(target=update)
@@ -138,14 +151,14 @@ if __name__ == '__main__':
       data["player"]["nickname"] = parsed_data["settings"]["nickname"]
       data["player"]["color"] = parsed_data["settings"]["color"]
 
-      if data["player"]["color"] == 'green': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3, color=color.green)
+      data["socket"]["room"] = parsed_data["global"]["connection"]["room_id"]
+
+      if data["player"]["color"] == 'green': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.green)
       elif data["player"]["color"] == 'red': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.red)
       elif data["player"]["color"] == 'yellow': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.yellow)
       elif data["player"]["color"] == 'orange': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.orange)
       elif data["player"]["color"] == 'blue': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.blue)
       else: text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.white)
-
-   Sky()
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
    arab = Entity(scale=.028, rotation=(-90, 0, 0))
@@ -173,3 +186,8 @@ if __name__ == '__main__':
 
    # if held_keys['q']:
    #    flag = True
+
+   # if h == False:
+   #    data["data"]["dir"] = player.rotation_y + 180
+   # else:
+   #    data["data"]["dir"] = data["data"]["dir"] + 10 * time.dt * 10 * 500

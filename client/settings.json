@@ -3,5 +3,10 @@
       "team": "T",
       "nickname": "[PUZ] Cklebepand",
       "color": "green"
+   },
+   "global": {
+      "connection": {
+         "room_id": ""
+      }
    }
 }
