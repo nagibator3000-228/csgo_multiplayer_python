@@ -63,19 +63,16 @@ io.on("connection", (socket) => {
    sockets.count_of_sockets = connectionsCount;
    console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets: ", sockets.sockets, "\n" + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
 
-   setTimeout(() => {
-      if (sockets.count_of_sockets >= 2) {
-         try {
-            io.emit("new", sockets.count_of_sockets)
-         } catch (e) {
-            console.error(new Error(`Error 502 | ${e}`));
-         }
-      }
-   }, 1200);
-
    socket.on("join", (data) => {
-      let parsed_data = JSON.parse(data);
-      socket.join(parsed_data.socket.room);
+      try {
+         let parsed_data = JSON.parse(data);
+         socket.join(parsed_data.socket.room);
+         if (sockets.count_of_sockets >= 2) {
+            io.emit("new", sockets.count_of_sockets)
+         }
+      } catch (e) {
+         console.error(new Error(`Error 502 | ${e}`));
+      }
    });
 
    socket.on("client_data", async (data) => {
