@@ -17,6 +17,8 @@ init()
 window.vsync = False
 window.fullscreen = False
 
+# window.position = Vec2(0, 100)
+
 flag = False
 data_flag = False
 sit_flag = False
@@ -77,12 +79,15 @@ def update():
    else:
       stay()
 
+   if held_keys['left shift'] and render_sit_flag:
+      player.speed = 3.5
+
    # print(phantom_x, phantom_y, phantom_z)
 
 def sit():
    player.camera_pivot.y = 2 - held_keys['left control']
    player.height = 2 - held_keys['left control']
-   player.speed = 2
+   player.speed = 1.9
 
 def stay():
    global render_sit_flag
@@ -122,6 +127,28 @@ def get_data(data):
       phantom_z = decoded_data["data"]["cord"]["z"]
 
       rot = decoded_data["data"]["dir"]
+
+      if decoded_data["player"]["color"] == 'green': 
+         text.color = color.green
+         text.text = decoded_data["player"]["nickname"]
+      elif decoded_data["player"]["color"] == 'red': 
+         text.color = color.red
+         text.text = decoded_data["player"]["nickname"]
+      elif decoded_data["player"]["color"] == 'orange': 
+         text.color = color.orange
+         text.text = decoded_data["player"]["nickname"]
+      elif decoded_data["player"]["color"] == 'yellow': 
+         text.color = color.yellow
+         text.text = decoded_data["player"]["nickname"]
+      elif decoded_data["player"]["color"] == 'blue': 
+         text.color = color.blue
+         text.text = decoded_data["player"]["nickname"]
+      elif decoded_data["player"]["color"] == 'pink': 
+         text.color = color.pink
+         text.text = decoded_data["player"]["nickname"]
+      else: 
+         text.color = color.white
+         text.text = decoded_data["player"]["nickname"]
 
       text.position = Vec3(phantom_x, phantom_y + 2.25, phantom_z)
 
@@ -176,7 +203,7 @@ def generate_id():
    return id_string
 
 if __name__ == '__main__':
-   player = FirstPersonController()
+   player = FirstPersonController(speed=6)
 
    Sky()
 
@@ -210,19 +237,14 @@ if __name__ == '__main__':
       data["player"]["nickname"] = parsed_data["settings"]["nickname"]
       data["player"]["color"] = parsed_data["settings"]["color"]
 
-      if data["player"]["color"] == 'green': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.green)
-      elif data["player"]["color"] == 'red': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.red)
-      elif data["player"]["color"] == 'yellow': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.yellow)
-      elif data["player"]["color"] == 'orange': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.orange)
-      elif data["player"]["color"] == 'blue': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.blue)
-      else: text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.white)
+   text = Text(parent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
    arab = Entity(scale=.028, rotation=(-90, 0, 0))
    actor = Actor("assets/models/t.glb")
    actor.reparentTo(arab)
    arab.hide()
-   text.hide()
+   # text.hide()
 
    app.run()
 
@@ -248,3 +270,9 @@ if __name__ == '__main__':
    #    data["data"]["dir"] = player.rotation_y + 180
    # else:
    #    data["data"]["dir"] = data["data"]["dir"] + 10 * time.dt * 10 * 500
+      # if data["player"]["color"] == 'green': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.green)
+      # elif data["player"]["color"] == 'red': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.red)
+      # elif data["player"]["color"] == 'yellow': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.yellow)
+      # elif data["player"]["color"] == 'orange': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.orange)
+      # elif data["player"]["color"] == 'blue': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.blue)
+      # else: text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.white)
