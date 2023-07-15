@@ -11,17 +11,6 @@ const path = require('path');
 // const Redis = require('ioredis');
 // const redis = new Redis();
 
-app.use(cors());
-
-"use strict";
-
-var save_to_cloud = true
-
-var sockets = {
-   sockets: [],
-   count_of_sockets: 0
-};
-
 // async function getCachedData(key) {
 //    let cachedData = await redis.get(key);
 //    if (cachedData) {
@@ -33,6 +22,17 @@ var sockets = {
 // function cacheData(key, data, expireation) {
 //    redis.setex(key, expireation, data);
 // }
+
+"use strict";
+
+app.use(cors());
+
+var save_to_cloud = true;
+
+var sockets = {
+   sockets: [],
+   count_of_sockets: 0
+};
 
 setInterval(() => {
    let date = new Date();
