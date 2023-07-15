@@ -1,1 +1,4 @@
 __LOGS__
+
+[15.07.2023 | 20:09:12] sockets: ["RJdINPnyccz7frlIAAAB","4mqCsdypNUth0FP0AAAD"]
+[15.07.2023 | 20:09:12] players online: 2
