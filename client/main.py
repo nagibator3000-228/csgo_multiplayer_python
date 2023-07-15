@@ -171,9 +171,9 @@ def send_data():
       # print("POST")
 
 def generate_id():
-    id_number = random.randint(100000, 999999)
-    id_string = "{:06d}".format(id_number)
-    return id_string
+   id_number = random.randint(100000, 999999)
+   id_string = "{:06d}".format(id_number)
+   return id_string
 
 if __name__ == '__main__':
    player = FirstPersonController()
