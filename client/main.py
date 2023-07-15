@@ -17,7 +17,7 @@ init()
 window.vsync = False
 window.fullscreen = False
 
-# window.position = Vec2(0, 100)
+window.position = Vec2(1000, 100)
 
 flag = False
 data_flag = False
@@ -40,7 +40,8 @@ players = []
 data = {
    "socket": {
       "id": "",
-      "room": ""
+      "room": "", 
+      "password": ""
    },
    "player": {
       "team": "",
@@ -129,26 +130,33 @@ def get_data(data):
       rot = decoded_data["data"]["dir"]
 
       if decoded_data["player"]["color"] == 'green': 
-         text.color = color.green
-         text.text = decoded_data["player"]["nickname"]
+         if text.color != color.green:
+            text.color = color.green
+            text.text = decoded_data["player"]["nickname"]
       elif decoded_data["player"]["color"] == 'red': 
-         text.color = color.red
-         text.text = decoded_data["player"]["nickname"]
+         if text.color != color.red:
+            text.color = color.red
+            text.text = decoded_data["player"]["nickname"]
       elif decoded_data["player"]["color"] == 'orange': 
-         text.color = color.orange
-         text.text = decoded_data["player"]["nickname"]
+         if text.color != color.orange:
+            text.color = color.orange
+            text.text = decoded_data["player"]["nickname"]
       elif decoded_data["player"]["color"] == 'yellow': 
-         text.color = color.yellow
-         text.text = decoded_data["player"]["nickname"]
+         if text.color != color.yellow:
+            text.color = color.yellow
+            text.text = decoded_data["player"]["nickname"]
       elif decoded_data["player"]["color"] == 'blue': 
-         text.color = color.blue
-         text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'pink': 
-         text.color = color.pink
-         text.text = decoded_data["player"]["nickname"]
+         if text.color != color.blue:
+            text.color = color.blue
+            text.text = decoded_data["player"]["nickname"]
+      elif decoded_data["player"]["color"] == 'purple': 
+         if text.color != color.pink:
+            text.color = color.pink
+            text.text = decoded_data["player"]["nickname"]
       else: 
-         text.color = color.white
-         text.text = decoded_data["player"]["nickname"]
+         if text.color != color.white:
+            text.color = color.white
+            text.text = decoded_data["player"]["nickname"]
 
       text.position = Vec3(phantom_x, phantom_y + 2.25, phantom_z)
 
@@ -188,7 +196,7 @@ def send_data():
       if (render_sit_flag):
          data["data"]["cord"]["y"] = player.y
       else:
-         data["data"]["cord"]["y"] = player.y - 1.2
+         data["data"]["cord"]["y"] = player.y - 1
 
       data["data"]["cord"]["x"] = player.x
       data["data"]["cord"]["z"] = player.z
@@ -203,7 +211,7 @@ def generate_id():
    return id_string
 
 if __name__ == '__main__':
-   player = FirstPersonController(speed=6)
+   player = FirstPersonController(speed=6, jump_height=1.5)
 
    Sky()
 
@@ -237,14 +245,17 @@ if __name__ == '__main__':
       data["player"]["nickname"] = parsed_data["settings"]["nickname"]
       data["player"]["color"] = parsed_data["settings"]["color"]
 
+      data["socket"]["password"] = parsed_data["global"]["connection"]["room_password"]
+
    text = Text(parent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
+   # block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
    arab = Entity(scale=.028, rotation=(-90, 0, 0))
    actor = Actor("assets/models/t.glb")
    actor.reparentTo(arab)
    arab.hide()
-   # text.hide()
+   text.hide()
 
    app.run()
 
@@ -270,9 +281,3 @@ if __name__ == '__main__':
    #    data["data"]["dir"] = player.rotation_y + 180
    # else:
    #    data["data"]["dir"] = data["data"]["dir"] + 10 * time.dt * 10 * 500
-      # if data["player"]["color"] == 'green': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.green)
-      # elif data["player"]["color"] == 'red': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.red)
-      # elif data["player"]["color"] == 'yellow': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.yellow)
-      # elif data["player"]["color"] == 'orange': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.orange)
-      # elif data["player"]["color"] == 'blue': text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.blue)
-      # else: text = Text(text=data["player"]["nickname"], parent=scene, origin=(0, -0.5), billboard=True, scale=3.2, color=color.white)
