@@ -2,11 +2,16 @@
    "settings": {
       "team": "T",
       "nickname": "[PUZ] Cklebepand",
-      "color": "green"
+      "color": "green",
+      "crosshair": {
+         "type": 2,
+         "size": 0.03
+      }
    },
    "global": {
       "connection": {
          "room_password": ""
-      }
+      }, 
+      "crosshair_types": ["point", "round", "+"]
    }
 }

@@ -17,7 +17,7 @@ init()
 window.vsync = False
 window.fullscreen = False
 
-window.position = Vec2(1000, 100)
+# window.position = Vec2(1000, 100)
 
 flag = False
 data_flag = False
@@ -82,6 +82,11 @@ def update():
 
    if held_keys['left shift'] and render_sit_flag:
       player.speed = 3.5
+
+   if mouse.left:
+      ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground])
+      if ray.hit:
+         print("hit")
 
    # print(phantom_x, phantom_y, phantom_z)
 
@@ -212,6 +217,10 @@ def generate_id():
 
 if __name__ == '__main__':
    player = FirstPersonController(speed=6, jump_height=1.5)
+   player.cursor.model = 'sphere'
+   player.cursor.rotation_z = 0
+   player.cursor.color = color.black
+   player.cursor.size = .05
 
    Sky()
 
@@ -246,6 +255,19 @@ if __name__ == '__main__':
       data["player"]["color"] = parsed_data["settings"]["color"]
 
       data["socket"]["password"] = parsed_data["global"]["connection"]["room_password"]
+
+      if (parsed_data["settings"]["crosshair"]["size"] != None):
+         player.cursor.scale = float(parsed_data["settings"]["crosshair"]["size"])
+
+      if (parsed_data["settings"]["crosshair"]["type"] != None):
+         player.cursor.model = 'quad'
+         if parsed_data["settings"]["crosshair"]["type"] == 0:
+            player.cursor.model = 'sphere'
+         else:
+            cursor_path = str("assets/models/cursor/{!r}").format(parsed_data["global"]["crosshair_types"][int(parsed_data["settings"]["crosshair"]["type"])])
+            cursor_path = cursor_path.replace("'", "")
+            # print(Fore.RED, cursor_path, Fore.WHITE)
+            player.cursor.texture = cursor_path
 
    text = Text(parent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
 
