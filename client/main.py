@@ -17,7 +17,7 @@ init()
 window.vsync = False
 window.fullscreen = False
 
-window.position = Vec2(1000, 100)
+# window.position = Vec2(0, 100)
 
 flag = False
 data_flag = False
@@ -89,7 +89,7 @@ def update():
    if (mouse.left):
       ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=True)
       if ray.hit:
-         print("Столкновение с объектом arab")
+         print("hit")
 
    # print(phantom_x, phantom_y, phantom_z)
 
