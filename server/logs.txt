@@ -1,40 +1,37 @@
 __LOGS__
 
-[15.07.2023 | 20:09:12] sockets: ["RJdINPnyccz7frlIAAAB","4mqCsdypNUth0FP0AAAD"]
-[15.07.2023 | 20:09:12] players online: 2
+[16.07.2023 | 11:38:20] sockets: ["urcWTdOFy90klpsxAAAD"]
+[16.07.2023 | 11:38:20] players online: 1
 
-[16.07.2023 | 10:17:35] sockets: []
-[16.07.2023 | 10:17:35] players online: 0
+[16.07.2023 | 11:38:39] sockets: ["urcWTdOFy90klpsxAAAD","CBhg15tIEH0xVyhjAAAF"]
+[16.07.2023 | 11:38:39] players online: 2
 
-[16.07.2023 | 10:22:35] sockets: ["P53soiKcCnXnI700AAAD"]
-[16.07.2023 | 10:22:35] players online: 1
+[16.07.2023 | 11:41:17] sockets: ["CBhg15tIEH0xVyhjAAAF"]
+[16.07.2023 | 11:41:17] players online: 1
 
-[16.07.2023 | 10:27:35] sockets: []
-[16.07.2023 | 10:27:35] players online: 0
+[16.07.2023 | 11:41:18] sockets: []
+[16.07.2023 | 11:41:18] players online: 0
 
-[16.07.2023 | 10:32:35] sockets: []
-[16.07.2023 | 10:32:35] players online: 0
+[16.07.2023 | 11:42:27] sockets: ["ZDVVM3KTi343FAqxAAAH"]
+[16.07.2023 | 11:42:27] players online: 1
 
-[16.07.2023 | 10:37:35] sockets: ["FJWQAow2ZsGkLRXwAAAd"]
-[16.07.2023 | 10:37:35] players online: 1
+[16.07.2023 | 11:42:43] sockets: ["ZDVVM3KTi343FAqxAAAH","1IXG-9q6tZ26NUQ8AAAJ"]
+[16.07.2023 | 11:42:43] players online: 2
 
-[16.07.2023 | 10:42:35] sockets: ["74hKtqLWNe3lssBgAAAn"]
-[16.07.2023 | 10:42:35] players online: 1
+[16.07.2023 | 11:43:13] sockets: ["1IXG-9q6tZ26NUQ8AAAJ"]
+[16.07.2023 | 11:43:13] players online: 1
 
-[16.07.2023 | 10:47:35] sockets: []
-[16.07.2023 | 10:47:35] players online: 0
+[16.07.2023 | 11:43:13] sockets: []
+[16.07.2023 | 11:43:13] players online: 0
 
-[16.07.2023 | 10:52:35] sockets: []
-[16.07.2023 | 10:52:35] players online: 0
+[16.07.2023 | 11:44:16] sockets: ["qXSKeFY4yA9toRDKAAAL"]
+[16.07.2023 | 11:44:16] players online: 1
 
-[16.07.2023 | 10:57:35] sockets: []
-[16.07.2023 | 10:57:35] players online: 0
+[16.07.2023 | 11:44:28] sockets: []
+[16.07.2023 | 11:44:28] players online: 0
 
-[16.07.2023 | 11:02:35] sockets: []
-[16.07.2023 | 11:02:35] players online: 0
+[16.07.2023 | 11:45:00] sockets: ["TwWsh0f-5McXuOSxAAAN"]
+[16.07.2023 | 11:45:00] players online: 1
 
-[16.07.2023 | 11:07:35] sockets: []
-[16.07.2023 | 11:07:35] players online: 0
-
-[16.07.2023 | 11:12:35] sockets: []
-[16.07.2023 | 11:12:35] players online: 0
+[16.07.2023 | 11:45:27] sockets: []
+[16.07.2023 | 11:45:27] players online: 0

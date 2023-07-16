@@ -39,15 +39,6 @@ setInterval(() => {
    console.log(`\nauto log [${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets: ", sockets.sockets, "\nauto log " + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
 }, 1 * 60 * 1000);
 
-setInterval(() => {
-   var date = new Date();
-   var month = date.getMonth() + 1;
-   const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] sockets: ${JSON.stringify(sockets.sockets)}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] players online: ${sockets.count_of_sockets}\n`;
-   fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
-      if (err) throw err;
-   });
-}, 5 * 60 * 1000);
-
 const back_up_file = path.join('auto-back-up.bat');
 if (save_to_cloud) {
    setInterval(() => {
@@ -84,6 +75,13 @@ io.on("connection", (socket) => {
          }
       } catch (e) {
          console.error(new Error(`Error 502 | ${e}`));
+      } finally {
+         var date = new Date();
+         var month = date.getMonth() + 1;
+         const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] sockets: ${JSON.stringify(sockets.sockets)}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] players online: ${sockets.count_of_sockets}\n`;
+         fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
+            if (err) throw err;
+         });
       }
    });
 
@@ -100,6 +98,7 @@ io.on("connection", (socket) => {
 
    socket.on("disconnect", () => {
       var date = new Date();
+      var month = date.getMonth() + 1;
       console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "\u001b[31mPlayer disconnected.\u001b[0m");
 
       sockets.count_of_sockets--;
@@ -111,6 +110,13 @@ io.on("connection", (socket) => {
          io.emit("del", sockets.count_of_sockets);
       } catch (e) {
          console.error(new Error(`Error 502 | ${e}`));
+      } finally {
+         var date = new Date();
+         var month = date.getMonth() + 1;
+         const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] sockets: ${JSON.stringify(sockets.sockets)}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] players online: ${sockets.count_of_sockets}\n`;
+         fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
+            if (err) throw err;
+         });
       }
 
       console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets: ", sockets.sockets, "\n" + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
@@ -125,5 +131,12 @@ http.listen(3000, '192.168.178.50', () => {
       console.log(`\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "\u001b[32mServer started on port 3000\u001b[0m\n");
    } catch (e) {
       console.error(new Error(`Error 503 | ${e}`));
+   } finally {
+      var date = new Date();
+      var month = date.getMonth() + 1;
+      const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] Server started on port 3000\n`;
+      fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
+         if (err) throw err;
+      });
    }
 });

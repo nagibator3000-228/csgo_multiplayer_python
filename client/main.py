@@ -17,7 +17,7 @@ init()
 window.vsync = False
 window.fullscreen = False
 
-# window.position = Vec2(1000, 100)
+window.position = Vec2(0, 100)
 
 flag = False
 data_flag = False
@@ -46,11 +46,11 @@ data = {
    "player": {
       "team": "",
       "nickname": "",
-      "color": ""
+      "color": "", 
+      "health": 100
    },
    "data": {
       "dir": 0,
-      "weapon": None,
       "cord": {
          "x": 0,
          "y": 0,
@@ -66,6 +66,9 @@ def update():
    global rot
    global render_sit_flag
    global solo
+
+   if (data["player"]["health"] <= 0):
+      application.quit()
 
    if (not solo):
       join_room()
@@ -83,10 +86,10 @@ def update():
    if held_keys['left shift'] and render_sit_flag:
       player.speed = 3.5
 
-   if mouse.left:
-      ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground])
+   if (mouse.left):
+      ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=True)
       if ray.hit:
-         print("hit")
+         print("Столкновение с объектом arab")
 
    # print(phantom_x, phantom_y, phantom_z)
 
@@ -94,6 +97,10 @@ def sit():
    player.camera_pivot.y = 2 - held_keys['left control']
    player.height = 2 - held_keys['left control']
    player.speed = 1.9
+
+   ray = raycast(origin=camera.world_position, direction=Vec3(0, 1, 0), distance=1, ignore=[camera, player])
+   if (ray.hit):
+      player.jump_height = 0
 
 def stay():
    global render_sit_flag
@@ -105,6 +112,7 @@ def stay():
       player.height = 2 - held_keys['left control']
       player.speed = 5
       render_sit_flag = True
+      player.jump_height = 1.5
 
 def start_client():
    global solo
@@ -272,7 +280,7 @@ if __name__ == '__main__':
    text = Text(parent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
-   # block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
+   block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
    arab = Entity(scale=.028, rotation=(-90, 0, 0))
    actor = Actor("assets/models/t.glb")
    actor.reparentTo(arab)
