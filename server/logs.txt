@@ -35,3 +35,23 @@ __LOGS__
 
 [16.07.2023 | 11:45:27] sockets: []
 [16.07.2023 | 11:45:27] players online: 0
+
+[16.07.2023 | 11:49:45] Server started on port 3000
+
+[16.07.2023 | 11:50:29] sockets: ["wB9ZfVobdqGWOiJ4AAAB"]
+[16.07.2023 | 11:50:29] players online: 1
+
+[16.07.2023 | 11:50:54] sockets: ["wB9ZfVobdqGWOiJ4AAAB","hr-Hk5b47PRElcOlAAAD"]
+[16.07.2023 | 11:50:54] players online: 2
+
+[16.07.2023 | 11:52:32] sockets: ["hr-Hk5b47PRElcOlAAAD"]
+[16.07.2023 | 11:52:32] players online: 1
+
+[16.07.2023 | 11:52:33] sockets: []
+[16.07.2023 | 11:52:33] players online: 0
+
+[16.07.2023 | 11:53:48] sockets: ["FH7FEAj0w2-wrv0iAAAF"]
+[16.07.2023 | 11:53:48] players online: 1
+
+[16.07.2023 | 11:54:17] sockets: []
+[16.07.2023 | 11:54:17] players online: 0

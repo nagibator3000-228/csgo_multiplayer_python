@@ -17,7 +17,7 @@ init()
 window.vsync = False
 window.fullscreen = False
 
-window.position = Vec2(0, 100)
+window.position = Vec2(1000, 100)
 
 flag = False
 data_flag = False
@@ -101,6 +101,8 @@ def sit():
    ray = raycast(origin=camera.world_position, direction=Vec3(0, 1, 0), distance=1, ignore=[camera, player])
    if (ray.hit):
       player.jump_height = 0
+   else:
+      player.jump_height = 1.5
 
 def stay():
    global render_sit_flag
