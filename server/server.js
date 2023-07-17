@@ -7,24 +7,9 @@ const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-// const Redis = require('ioredis');
-// const redis = new Redis();
-
-// async function getCachedData(key) {
-//    let cachedData = await redis.get(key);
-//    if (cachedData) {
-//       return JSON.parse(cachedData);
-//    }
-//    return null;
-// }
-
-// function cacheData(key, data, expireation) {
-//    redis.setex(key, expireation, data);
-// }
-
 "use strict";
 
-app.use(cors());
+app.use(cors({origin: '*'}));
 
 var save_to_cloud = true;
 
@@ -40,7 +25,7 @@ setInterval(() => {
 }, 1 * 60 * 1000);
 
 const back_up_file = path.join('auto-back-up.bat');
-if (save_to_cloud) {
+if (save_to_cloud === true) {
    setInterval(() => {
       exec(back_up_file, (error, stdout, stderr) => {
          var date = new Date();
@@ -106,6 +91,7 @@ io.on("connection", (socket) => {
       if (index !== -1) {
          sockets.sockets.splice(index, 1);
       }
+
       try {
          io.emit("del", sockets.count_of_sockets);
       } catch (e) {
@@ -113,13 +99,12 @@ io.on("connection", (socket) => {
       } finally {
          var date = new Date();
          var month = date.getMonth() + 1;
+         console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets: ", sockets.sockets, "\n" + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
          const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] sockets: ${JSON.stringify(sockets.sockets)}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] players online: ${sockets.count_of_sockets}\n`;
          fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
             if (err) throw err;
          });
       }
-
-      console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets: ", sockets.sockets, "\n" + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
    });
 });
 

@@ -17,8 +17,6 @@ init()
 window.vsync = False
 window.fullscreen = False
 
-# window.position = Vec2(0, 100)
-
 flag = False
 data_flag = False
 sit_flag = False
@@ -66,6 +64,11 @@ def update():
    global rot
    global render_sit_flag
    global solo
+
+   if held_keys['left arrow']:
+      window.position = Vec2(0, 100)
+   elif held_keys['right arrow']:
+      window.position = Vec2(1000, 100)
 
    if (data["player"]["health"] <= 0):
       application.quit()
@@ -243,7 +246,7 @@ if __name__ == '__main__':
       data["socket"]["room"] = room_id
    elif mode == '2':
       room_id = input("\nwrite a room id to join: ")
-      data["socket"]["room"] = room_id
+      data["socket"]["room"] = room_id.replace(" ", "")
    else:
       print(Fore.RED + "tf you write here? \n !solo mode!" + Fore.WHITE)
       solo = True
@@ -276,7 +279,6 @@ if __name__ == '__main__':
          else:
             cursor_path = str("assets/models/cursor/{!r}").format(parsed_data["global"]["crosshair_types"][int(parsed_data["settings"]["crosshair"]["type"])])
             cursor_path = cursor_path.replace("'", "")
-            # print(Fore.RED, cursor_path, Fore.WHITE)
             player.cursor.texture = cursor_path
 
    text = Text(parent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
