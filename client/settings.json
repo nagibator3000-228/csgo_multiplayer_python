@@ -12,6 +12,6 @@
       "connection": {
          "room_password": ""
       }, 
-      "crosshair_types": ["point", "round", "+"]
+      "crosshair_paths": ["point", "round", "+"]
    }
 }

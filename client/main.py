@@ -277,7 +277,7 @@ if __name__ == '__main__':
          if parsed_data["settings"]["crosshair"]["type"] == 0:
             player.cursor.model = 'sphere'
          else:
-            cursor_path = str("assets/models/cursor/{!r}").format(parsed_data["global"]["crosshair_types"][int(parsed_data["settings"]["crosshair"]["type"])])
+            cursor_path = str("assets/models/cursor/{!r}").format(parsed_data["global"]["crosshair_paths"][int(parsed_data["settings"]["crosshair"]["type"])])
             cursor_path = cursor_path.replace("'", "")
             player.cursor.texture = cursor_path
 

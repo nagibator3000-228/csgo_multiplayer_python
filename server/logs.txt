@@ -673,3 +673,5 @@ __LOGS__
 
 [17.07.2023 | 21:36:31] sockets: []
 [17.07.2023 | 21:36:31] players online: 0
+
+[18.07.2023 | 15:46:41] Server started on port 3000
