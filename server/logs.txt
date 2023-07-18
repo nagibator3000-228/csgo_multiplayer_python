@@ -675,3 +675,17 @@ __LOGS__
 [17.07.2023 | 21:36:31] players online: 0
 
 [18.07.2023 | 15:46:41] Server started on port 3000
+
+[18.07.2023 | 18:24:28] Server started on port 3000
+
+[18.07.2023 | 18:24:34] sockets: ["oY5bZillHp6u4CL6AAAB"]
+[18.07.2023 | 18:24:34] players online: 1
+
+[18.07.2023 | 18:24:49] sockets: ["oY5bZillHp6u4CL6AAAB","YbtHw6QIJMJsQXIeAAAD"]
+[18.07.2023 | 18:24:49] players online: 2
+
+[18.07.2023 | 18:25:31] sockets: ["YbtHw6QIJMJsQXIeAAAD"]
+[18.07.2023 | 18:25:31] players online: 1
+
+[18.07.2023 | 18:25:31] sockets: []
+[18.07.2023 | 18:25:31] players online: 0
