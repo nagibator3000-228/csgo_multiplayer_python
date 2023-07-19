@@ -12,6 +12,8 @@ const crypto = require('crypto');
 
 app.use(cors({origin: '*'}));
 
+var anti_cheat = true;
+
 var save_to_cloud = true;
 
 var sockets = {
@@ -73,7 +75,7 @@ io.on("connection", (socket) => {
    socket.on("join", (data) => {
       try {
          let parsed_data = JSON.parse(data);
-         if (parsed_data.socket.hash != main_hash) {
+         if (parsed_data.socket.hash != main_hash && anti_cheat) {
             socket.disconnect();
             return;
          }
@@ -99,7 +101,7 @@ io.on("connection", (socket) => {
       if (sockets.count_of_sockets >= 2) {
          try {
             let parsed_data = JSON.parse(data);
-            if (parsed_data.socket.hash != main_hash) {
+            if (parsed_data.socket.hash != main_hash && anti_cheat) {
                socket.disconnect();
                return;
             }
