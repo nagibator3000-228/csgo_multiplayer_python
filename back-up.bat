@@ -1,5 +1,5 @@
 git status
 git add -u
 git status
-git commit -m "deleted ioredis"
+git commit -m "added hash to logs"
 git push

@@ -56,6 +56,9 @@ readStream.on('end', () => {
    const fileHash = hash.digest('hex');
    main_hash = fileHash;
    console.log(`crypto main hash: ${fileHash}`);
+   fs.writeFile('logs.txt', `\nhash: ${fileHash}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
+      if (err) throw err;
+   });
 });
 
 readStream.on('error', (err) => {
@@ -150,7 +153,7 @@ http.listen(3000, '192.168.178.50', () => {
    } finally {
       var date = new Date();
       var month = date.getMonth() + 1;
-      const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] Server started on port 3000\n`;
+      const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}] Server started on port 3000\n hash: ${main_hash}\n`;
       fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
          if (err) throw err;
       });
