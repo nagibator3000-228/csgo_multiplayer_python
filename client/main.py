@@ -9,7 +9,7 @@ import json
 import random
 import hashlib
 import sys
-
+ 
 app = Ursina()
 
 sio = socketio.Client()

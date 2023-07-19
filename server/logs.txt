@@ -1,1 +1,70 @@
 __LOGS__
+
+[19.07.2023 | 15:59:33] sockets: []
+[19.07.2023 | 15:59:33] players online: 0
+
+[19.07.2023 | 15:59:33] CHEATER DETECTED: EkOG7JNTAwshxPKsAAAD
+[19.07.2023 | 15:59:33] CHEATER NICKNAME: [PUZ] Cklebepand
+
+[19.07.2023 | 15:59:33] sockets: []
+[19.07.2023 | 15:59:33] players online: 0
+
+[19.07.2023 | 15:59:39] CHEATER DETECTED: vCu1TyMrHn7ujnz0AAAF
+[19.07.2023 | 15:59:39] CHEATER NICKNAME: [PUZ] Cklebepand
+
+[19.07.2023 | 15:59:39] sockets: []
+[19.07.2023 | 15:59:39] players online: 0
+
+[19.07.2023 | 15:59:39] sockets: []
+[19.07.2023 | 15:59:39] players online: 0
+
+[19.07.2023 | 16:00:18] sockets: []
+[19.07.2023 | 16:00:18] players online: 0
+
+[19.07.2023 | 16:00:18] sockets: []
+[19.07.2023 | 16:00:18] players online: 0
+
+[19.07.2023 | 16:00:18] CHEATER DETECTED: siaXM6j6Trp7Y03oAAAH
+[19.07.2023 | 16:00:18] CHEATER NICKNAME: [PUZ] Cklebepand
+
+[19.07.2023 | 16:00:47] sockets: []
+[19.07.2023 | 16:00:47] players online: 0
+
+[19.07.2023 | 16:00:47] sockets: []
+[19.07.2023 | 16:00:47] players online: 0
+
+[19.07.2023 | 16:00:47] CHEATER DETECTED: J1lW8Np_YcJFixgOAAAJ
+[19.07.2023 | 16:00:47] CHEATER NICKNAME: [PUZ] Cklebepand
+
+[19.07.2023 | 16:01:18] Server started on port 3000
+
+hash: d6c81511542c73ea137d2a73d6598a1adf2fd109250ec20ab171af664c946fde
+
+[19.07.2023 | 16:01:26] sockets: []
+[19.07.2023 | 16:01:26] players online: 0
+
+[19.07.2023 | 16:01:32] sockets: ["pQ_jAovK-9K-5wuNAAAD"]
+[19.07.2023 | 16:01:32] players online: 1
+
+[19.07.2023 | 16:01:34] sockets: []
+[19.07.2023 | 16:01:34] players online: 0
+
+[19.07.2023 | 16:01:40] Server started on port 3000
+
+hash: d6c81511542c73ea137d2a73d6598a1adf2fd109250ec20ab171af664c946fde
+
+[19.07.2023 | 16:01:53] Server started on port 3000
+
+hash: f4865f142867a4fb258e3ee5b030e9f4c9edded81122626a7c2036b9b7945421
+
+[19.07.2023 | 16:02:10] sockets: ["YlgY09LmtzmDpdGYAAAB"]
+[19.07.2023 | 16:02:10] players online: 1
+
+[19.07.2023 | 16:02:27] sockets: ["YlgY09LmtzmDpdGYAAAB","xVaakuxqozpdTIV1AAAD"]
+[19.07.2023 | 16:02:27] players online: 2
+
+[19.07.2023 | 16:03:19] sockets: ["xVaakuxqozpdTIV1AAAD"]
+[19.07.2023 | 16:03:19] players online: 1
+
+[19.07.2023 | 16:03:20] sockets: []
+[19.07.2023 | 16:03:20] players online: 0
