@@ -47,8 +47,7 @@ data = {
    "player": {
       "team": "",
       "nickname": "",
-      "color": "", 
-      "health": 100
+      "color": ""
    },
    "data": {
       "dir": 0,
@@ -58,6 +57,10 @@ data = {
          "z": 0
       }
    }
+}
+
+game_data = {
+   "health": 100
 }
 
 def calculate_file_hash(file_path):
@@ -79,7 +82,7 @@ def update():
    elif held_keys['right arrow']:
       window.position = Vec2(1000, 100)
 
-   if (data["player"]["health"] <= 0):
+   if (game_data["health"] <= 0 or game_data["health"] > 100):
       application.quit()
 
    if (not solo):

@@ -1,5 +1,5 @@
 git status
 git add -u
 git status
-git commit -m "anti cheat update,  log cheater, disconnect cheater, toogle anti cheat on server"
+git commit -m "log bug time fix, anti cheat log, anti cheat logging, warning log, safety log"
 git push
