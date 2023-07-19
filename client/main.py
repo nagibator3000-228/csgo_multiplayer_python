@@ -7,6 +7,8 @@ import socketio
 import threading
 import json
 import random
+import hashlib
+import sys
 
 app = Ursina()
 
@@ -39,7 +41,8 @@ data = {
    "socket": {
       "id": "",
       "room": "", 
-      "password": ""
+      "password": "", 
+      "hash": ""
    },
    "player": {
       "team": "",
@@ -56,6 +59,12 @@ data = {
       }
    }
 }
+
+def calculate_file_hash(file_path):
+   with open(file_path, 'rb') as file:
+      data = file.read()
+      file_hash = hashlib.sha256(data).hexdigest()
+      return file_hash
 
 def update():
    global phantom_x
@@ -290,6 +299,10 @@ if __name__ == '__main__':
    actor.reparentTo(arab)
    arab.hide()
    text.hide()
+
+   file_path = sys.argv[0]
+   file_hash = calculate_file_hash(file_path)
+   data["socket"]["hash"] = file_hash
 
    app.run()
 

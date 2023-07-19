@@ -6,6 +6,7 @@ const cors = require('cors');
 const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 
 "use strict";
 
@@ -39,6 +40,26 @@ if (save_to_cloud === true) {
    }, 60 * 60 * 1 * 1000);
 }
 
+const main_path = 'anti_cheat/main.py';
+const readStream = fs.createReadStream(main_path);
+const hash = crypto.createHash('sha256');
+
+let main_hash;
+
+readStream.on('data', (data) => {
+   hash.update(data);
+});
+
+readStream.on('end', () => {
+   const fileHash = hash.digest('hex');
+   main_hash = fileHash;
+   console.log(`crypto main hash: ${fileHash}`);
+});
+
+readStream.on('error', (err) => {
+   console.error('Error :', err);
+});
+
 io.on("connection", (socket) => {
    var date = new Date();
    var month = date.getMonth() + 1;
@@ -52,6 +73,10 @@ io.on("connection", (socket) => {
    socket.on("join", (data) => {
       try {
          let parsed_data = JSON.parse(data);
+         if (parsed_data.socket.hash != main_hash) {
+            socket.disconnect();
+            return;
+         }
          socket.join(parsed_data.socket.room);
          const room = io.sockets.adapter.rooms.get(parsed_data.socket.room);
          const playerCount = room ? room.size : 0;
@@ -74,6 +99,10 @@ io.on("connection", (socket) => {
       if (sockets.count_of_sockets >= 2) {
          try {
             let parsed_data = JSON.parse(data);
+            if (parsed_data.socket.hash != main_hash) {
+               socket.disconnect();
+               return;
+            }
             socket.broadcast.to(parsed_data.socket.room).emit('server_res', JSON.stringify(parsed_data));
          } catch (e) {
             console.error(new Error(`Error 502 | ${e}`));

@@ -689,3 +689,317 @@ __LOGS__
 
 [18.07.2023 | 18:25:31] sockets: []
 [18.07.2023 | 18:25:31] players online: 0
+
+[19.07.2023 | 14:48:48] Server started on port 3000
+
+[19.07.2023 | 14:53:48] sockets: ["0-_TgINowlcejMnXAAAB"]
+[19.07.2023 | 14:53:48] players online: 1
+
+[19.07.2023 | 14:54:03] sockets: ["0-_TgINowlcejMnXAAAB","D9KBilTAh462CF4tAAAD"]
+[19.07.2023 | 14:54:03] players online: 2
+
+[19.07.2023 | 14:55:23] sockets: ["D9KBilTAh462CF4tAAAD"]
+[19.07.2023 | 14:55:23] players online: 1
+
+[19.07.2023 | 14:55:24] sockets: []
+[19.07.2023 | 14:55:24] players online: 0
+
+[19.07.2023 | 14:57:37] sockets: ["CjVbNhjg-koZoPtxAAAF"]
+[19.07.2023 | 14:57:37] players online: 1
+
+[19.07.2023 | 14:57:44] sockets: []
+[19.07.2023 | 14:57:44] players online: 0
+
+[19.07.2023 | 14:58:12] sockets: ["zUoKw_ovHKAd9jZFAAAH"]
+[19.07.2023 | 14:58:12] players online: 1
+
+[19.07.2023 | 14:58:13] sockets: []
+[19.07.2023 | 14:58:13] players online: 0
+
+[19.07.2023 | 14:58:37] sockets: ["IOaehLYb_AOEhzYNAAAJ"]
+[19.07.2023 | 14:58:37] players online: 1
+
+[19.07.2023 | 14:58:40] sockets: []
+[19.07.2023 | 14:58:40] players online: 0
+
+[19.07.2023 | 14:58:58] sockets: ["hbdsLVajwzWJh8-YAAAL"]
+[19.07.2023 | 14:58:58] players online: 1
+
+[19.07.2023 | 14:59:03] sockets: []
+[19.07.2023 | 14:59:03] players online: 0
+
+[19.07.2023 | 14:59:11] sockets: ["jM3dMxA08SENIk-RAAAN"]
+[19.07.2023 | 14:59:11] players online: 1
+
+[19.07.2023 | 14:59:13] sockets: []
+[19.07.2023 | 14:59:13] players online: 0
+
+[19.07.2023 | 14:59:19] sockets: ["HoF0ft1D5QqGEQvhAAAP"]
+[19.07.2023 | 14:59:19] players online: 1
+
+[19.07.2023 | 14:59:21] sockets: []
+[19.07.2023 | 14:59:21] players online: 0
+
+[19.07.2023 | 14:59:53] Server started on port 3000
+
+[19.07.2023 | 15:01:04] Server started on port 3000
+
+[19.07.2023 | 15:01:12] Server started on port 3000
+
+[19.07.2023 | 15:01:28] Server started on port 3000
+
+[19.07.2023 | 15:02:37] Server started on port 3000
+
+[19.07.2023 | 15:02:39] Server started on port 3000
+
+[19.07.2023 | 15:02:41] Server started on port 3000
+
+[19.07.2023 | 15:02:47] Server started on port 3000
+
+[19.07.2023 | 15:03:06] sockets: []
+[19.07.2023 | 15:03:06] players online: 0
+
+[19.07.2023 | 15:03:17] sockets: ["kgjoqbH0Nmu2gESoAAAD"]
+[19.07.2023 | 15:03:17] players online: 1
+
+[19.07.2023 | 15:03:19] sockets: []
+[19.07.2023 | 15:03:19] players online: 0
+
+[19.07.2023 | 15:03:40] Server started on port 3000
+
+[19.07.2023 | 15:03:55] Server started on port 3000
+
+[19.07.2023 | 15:04:12] Server started on port 3000
+
+[19.07.2023 | 15:04:38] Server started on port 3000
+
+[19.07.2023 | 15:04:40] Server started on port 3000
+
+[19.07.2023 | 15:04:54] Server started on port 3000
+
+[19.07.2023 | 15:05:12] Server started on port 3000
+
+[19.07.2023 | 15:05:18] Server started on port 3000
+
+[19.07.2023 | 15:05:22] Server started on port 3000
+
+[19.07.2023 | 15:05:29] Server started on port 3000
+
+[19.07.2023 | 15:05:33] Server started on port 3000
+
+[19.07.2023 | 15:05:46] Server started on port 3000
+
+[19.07.2023 | 15:05:52] Server started on port 3000
+
+[19.07.2023 | 15:06:00] Server started on port 3000
+
+[19.07.2023 | 15:07:11] Server started on port 3000
+
+[19.07.2023 | 15:07:13] Server started on port 3000
+
+[19.07.2023 | 15:07:34] Server started on port 3000
+
+[19.07.2023 | 15:07:39] Server started on port 3000
+
+[19.07.2023 | 15:07:53] sockets: ["4xb6dH60ZclhPpy7AAAB"]
+[19.07.2023 | 15:07:53] players online: 1
+
+[19.07.2023 | 15:07:55] sockets: []
+[19.07.2023 | 15:07:55] players online: 0
+
+[19.07.2023 | 15:08:33] sockets: ["f8xNnhBw0byaDmxiAAAD"]
+[19.07.2023 | 15:08:33] players online: 1
+
+[19.07.2023 | 15:08:34] sockets: []
+[19.07.2023 | 15:08:34] players online: 0
+
+[19.07.2023 | 15:09:26] sockets: ["mXz9bhhwpNau--tGAAAF"]
+[19.07.2023 | 15:09:26] players online: 1
+
+[19.07.2023 | 15:09:31] sockets: []
+[19.07.2023 | 15:09:31] players online: 0
+
+[19.07.2023 | 15:09:42] Server started on port 3000
+
+[19.07.2023 | 15:09:49] Server started on port 3000
+
+[19.07.2023 | 15:09:51] Server started on port 3000
+
+[19.07.2023 | 15:09:55] Server started on port 3000
+
+[19.07.2023 | 15:09:58] Server started on port 3000
+
+[19.07.2023 | 15:10:06] sockets: ["zjYKGZ82hijj5SZPAAAB"]
+[19.07.2023 | 15:10:06] players online: 1
+
+[19.07.2023 | 15:10:15] sockets: ["zjYKGZ82hijj5SZPAAAB","vJYfGcdnj61WIRoTAAAD"]
+[19.07.2023 | 15:10:15] players online: 2
+
+[19.07.2023 | 15:10:29] sockets: ["vJYfGcdnj61WIRoTAAAD"]
+[19.07.2023 | 15:10:29] players online: 1
+
+[19.07.2023 | 15:10:30] sockets: []
+[19.07.2023 | 15:10:30] players online: 0
+
+[19.07.2023 | 15:10:38] Server started on port 3000
+
+[19.07.2023 | 15:10:42] sockets: ["8BZR4hqEhRO2WqhzAAAB"]
+[19.07.2023 | 15:10:42] players online: 1
+
+[19.07.2023 | 15:10:57] sockets: ["8BZR4hqEhRO2WqhzAAAB","3MZPu6d4hrwocMD_AAAD"]
+[19.07.2023 | 15:10:57] players online: 2
+
+[19.07.2023 | 15:11:13] sockets: ["3MZPu6d4hrwocMD_AAAD"]
+[19.07.2023 | 15:11:13] players online: 1
+
+[19.07.2023 | 15:11:13] sockets: []
+[19.07.2023 | 15:11:13] players online: 0
+
+[19.07.2023 | 15:11:29] Server started on port 3000
+
+[19.07.2023 | 15:11:40] Server started on port 3000
+
+[19.07.2023 | 15:11:46] Server started on port 3000
+
+[19.07.2023 | 15:11:50] Server started on port 3000
+
+[19.07.2023 | 15:11:56] Server started on port 3000
+
+[19.07.2023 | 15:12:02] Server started on port 3000
+
+[19.07.2023 | 15:12:09] Server started on port 3000
+
+[19.07.2023 | 15:12:11] Server started on port 3000
+
+[19.07.2023 | 15:12:22] Server started on port 3000
+
+[19.07.2023 | 15:12:33] Server started on port 3000
+
+[19.07.2023 | 15:12:52] Server started on port 3000
+
+[19.07.2023 | 15:13:36] Server started on port 3000
+
+[19.07.2023 | 15:13:50] Server started on port 3000
+
+[19.07.2023 | 15:13:59] Server started on port 3000
+
+[19.07.2023 | 15:14:02] Server started on port 3000
+
+[19.07.2023 | 15:14:07] Server started on port 3000
+
+[19.07.2023 | 15:14:25] Server started on port 3000
+
+[19.07.2023 | 15:14:37] Server started on port 3000
+
+[19.07.2023 | 15:14:41] Server started on port 3000
+
+[19.07.2023 | 15:15:05] Server started on port 3000
+
+[19.07.2023 | 15:15:13] Server started on port 3000
+
+[19.07.2023 | 15:15:16] Server started on port 3000
+
+[19.07.2023 | 15:15:22] Server started on port 3000
+
+[19.07.2023 | 15:15:28] Server started on port 3000
+
+[19.07.2023 | 15:15:36] Server started on port 3000
+
+[19.07.2023 | 15:15:56] Server started on port 3000
+
+[19.07.2023 | 15:16:26] Server started on port 3000
+
+[19.07.2023 | 15:16:28] Server started on port 3000
+
+[19.07.2023 | 15:16:52] Server started on port 3000
+
+[19.07.2023 | 15:16:58] Server started on port 3000
+
+[19.07.2023 | 15:17:01] Server started on port 3000
+
+[19.07.2023 | 15:17:25] Server started on port 3000
+
+[19.07.2023 | 15:17:28] Server started on port 3000
+
+[19.07.2023 | 15:17:47] Server started on port 3000
+
+[19.07.2023 | 15:18:32] Server started on port 3000
+
+[19.07.2023 | 15:19:16] Server started on port 3000
+
+[19.07.2023 | 15:20:01] Server started on port 3000
+
+[19.07.2023 | 15:20:26] Server started on port 3000
+
+[19.07.2023 | 15:21:11] Server started on port 3000
+
+[19.07.2023 | 15:21:13] Server started on port 3000
+
+[19.07.2023 | 15:21:21] Server started on port 3000
+
+[19.07.2023 | 15:21:27] sockets: ["jAJmX9OC6D1KbHaoAAAB"]
+[19.07.2023 | 15:21:27] players online: 1
+
+[19.07.2023 | 15:21:30] sockets: []
+[19.07.2023 | 15:21:30] players online: 0
+
+[19.07.2023 | 15:21:34] Server started on port 3000
+
+[19.07.2023 | 15:21:43] Server started on port 3000
+
+[19.07.2023 | 15:21:46] Server started on port 3000
+
+[19.07.2023 | 15:21:51] sockets: []
+[19.07.2023 | 15:21:51] players online: 0
+
+[19.07.2023 | 15:21:51] sockets: []
+[19.07.2023 | 15:21:51] players online: 0
+
+[19.07.2023 | 15:28:54] sockets: []
+[19.07.2023 | 15:28:54] players online: 0
+
+[19.07.2023 | 15:30:11] sockets: []
+[19.07.2023 | 15:30:11] players online: 0
+
+[19.07.2023 | 15:30:11] sockets: []
+[19.07.2023 | 15:30:11] players online: 0
+
+[19.07.2023 | 15:30:45] Server started on port 3000
+
+[19.07.2023 | 15:30:52] sockets: ["ax7niQRWApvIj5AaAAAB"]
+[19.07.2023 | 15:30:52] players online: 1
+
+[19.07.2023 | 15:31:06] sockets: []
+[19.07.2023 | 15:31:06] players online: 0
+
+[19.07.2023 | 15:31:32] sockets: ["VauXMj7AHEZPXT2tAAAD"]
+[19.07.2023 | 15:31:32] players online: 1
+
+[19.07.2023 | 15:31:34] sockets: []
+[19.07.2023 | 15:31:34] players online: 0
+
+[19.07.2023 | 15:32:22] sockets: []
+[19.07.2023 | 15:32:22] players online: 0
+
+[19.07.2023 | 15:32:22] sockets: []
+[19.07.2023 | 15:32:22] players online: 0
+
+[19.07.2023 | 15:32:30] sockets: []
+[19.07.2023 | 15:32:30] players online: 0
+
+[19.07.2023 | 15:32:30] sockets: []
+[19.07.2023 | 15:32:30] players online: 0
+
+[19.07.2023 | 15:32:44] sockets: []
+[19.07.2023 | 15:32:44] players online: 0
+
+[19.07.2023 | 15:32:44] sockets: []
+[19.07.2023 | 15:32:44] players online: 0
+
+[19.07.2023 | 15:33:09] Server started on port 3000
+
+[19.07.2023 | 15:33:19] sockets: ["8MelFrog4YIIVLpkAAAB"]
+[19.07.2023 | 15:33:19] players online: 1
+
+[19.07.2023 | 15:33:26] sockets: []
+[19.07.2023 | 15:33:26] players online: 0
