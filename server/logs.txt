@@ -1,2 +1,4 @@
 __LOGS__
 
+
+[19.07.2023 | 15:38:32] Server started on port 3000
