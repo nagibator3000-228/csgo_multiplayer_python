@@ -35,13 +35,10 @@ rot = 0
 
 weapon = None
 
-players = []
-
 data = {
    "socket": {
       "id": "",
-      "room": "", 
-      "password": "", 
+      "room": "",
       "hash": ""
    },
    "player": {

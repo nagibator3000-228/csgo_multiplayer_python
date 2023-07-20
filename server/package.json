@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "1.0.0",
+  "version": "2.5.6",
   "description": "server for csgo multiplayer",
   "main": "server.js",
   "scripts": {
