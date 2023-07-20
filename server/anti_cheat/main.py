@@ -279,8 +279,6 @@ if __name__ == '__main__':
       data["player"]["nickname"] = parsed_data["settings"]["nickname"]
       data["player"]["color"] = parsed_data["settings"]["color"]
 
-      data["socket"]["password"] = parsed_data["global"]["connection"]["room_password"]
-
       if (parsed_data["settings"]["crosshair"]["size"] != None):
          player.cursor.scale = float(parsed_data["settings"]["crosshair"]["size"])
 

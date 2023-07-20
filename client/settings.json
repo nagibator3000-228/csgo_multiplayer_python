@@ -9,9 +9,6 @@
       }
    },
    "global": {
-      "connection": {
-         "room_password": ""
-      }, 
       "crosshair_paths": ["point", "round", "+"]
    }
 }
