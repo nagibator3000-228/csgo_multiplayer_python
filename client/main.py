@@ -3,8 +3,6 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import *
 from direct.actor.Actor import Actor
 from panda3d.core import DirectionalLight
-from physics3d import Debugger, BoxCollider, MeshCollider
-from panda3d.bullet import BulletWorld
 from colorama import init, Fore
 import socketio
 import threading
@@ -14,9 +12,6 @@ import hashlib
 import sys
 
 app = Ursina()
-
-world = BulletWorld()
-world.setGravity(Vec3(0, -9.81, 0))
 
 sio = socketio.Client()
 
@@ -132,9 +127,6 @@ def update():
       ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=True)
       if ray.hit:
          print("hit")
-
-   dt = time.dt
-   world.doPhysics(dt)
 
    # print(phantom_x, phantom_y, phantom_z)
 
@@ -325,17 +317,15 @@ if __name__ == '__main__':
    text = Text(parent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
-   block = Entity(scale=1, model='cube', position=Vec3(5, 2, 5))
+   block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
    arab = Entity(scale=.028, rotation=(-90, 0, 0))
    actor = Actor("assets/models/t.glb")
    actor.reparentTo(arab)
    arab.hide()
    text.hide()
 
-   MeshCollider(world, block, mass=1)
-
-   sun = SunLight(direction = (-0.7, -0.9, 0.5), resolution = 3895, player = player)
-   ambient = AmbientLight(color = Vec4(0.485, 0.5, 0.63, 0) * 1.5)
+   sun = SunLight(direction=(-0.7, -0.9, 0.5), resolution=3955, player=player)
+   ambient = AmbientLight(color=Vec4(0.485, 0.5, 0.63, 0) * 1.5)
 
    render.setShaderAuto()
 

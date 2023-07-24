@@ -2,6 +2,7 @@ from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import *
 from direct.actor.Actor import Actor
+from panda3d.core import DirectionalLight
 from colorama import init, Fore
 import socketio
 import threading
@@ -9,13 +10,37 @@ import json
 import random
 import hashlib
 import sys
- 
+
 app = Ursina()
 
 sio = socketio.Client()
 
 init()
 
+class SunLight(Entity):
+   def __init__(self, direction, resolution, player):
+      super().__init__()
+
+      self.player = player
+      self.resolution = resolution
+
+      self.dlight = DirectionalLight("sun")
+      self.dlight.setShadowCaster(True, self.resolution, self.resolution)
+
+      lens = self.dlight.getLens()
+      lens.setNearFar(-80, 200)
+      lens.setFilmSize((100, 100))
+
+      self.dlnp = render.attachNewNode(self.dlight)
+      self.dlnp.lookAt(direction)
+      render.setLight(self.dlnp)
+
+   def update(self):
+      self.dlnp.setPos(self.player.world_position)
+
+   def update_resolution(self):
+      self.dlight.setShadowCaster(True, self.resolution, self.resolution)
+      
 window.vsync = False
 window.fullscreen = False
 
@@ -227,6 +252,7 @@ def send_data():
 
       data["data"]["cord"]["x"] = player.x
       data["data"]["cord"]["z"] = player.z
+
       data["data"]["weapon"] = weapon
 
       sio.emit('client_data', json.dumps(data))
@@ -297,6 +323,11 @@ if __name__ == '__main__':
    actor.reparentTo(arab)
    arab.hide()
    text.hide()
+
+   sun = SunLight(direction = (-0.7, -0.9, 0.5), resolution = 3895, player = player)
+   ambient = AmbientLight(color = Vec4(0.485, 0.5, 0.63, 0) * 1.5)
+
+   render.setShaderAuto()
 
    file_path = sys.argv[0]
    file_hash = calculate_file_hash(file_path)

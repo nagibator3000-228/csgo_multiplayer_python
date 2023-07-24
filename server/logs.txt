@@ -919,3 +919,101 @@ crypto main hash: cadab5230aa903ab565ebeda852aa00a3c59f6231dd19c7deb0ddd51349fb3
 
 [24.07.2023 | 16 : 43 : 32] sockets: []
 [24.07.2023 | 16 : 43 : 32] players online: 0
+
+[24.07.2023 | 16 : 43 : 38] sockets: ["dI3Rh4fJQtCDu9L5AAB5"]
+[24.07.2023 | 16 : 43 : 38] players online: 1
+
+[24.07.2023 | 16 : 43 : 52] sockets: ["dI3Rh4fJQtCDu9L5AAB5","BcUi_bDX6Hzb95KlAAB7"]
+[24.07.2023 | 16 : 43 : 52] players online: 2
+
+[24.07.2023 | 16 : 44 : 11] sockets: ["BcUi_bDX6Hzb95KlAAB7"]
+[24.07.2023 | 16 : 44 : 11] players online: 1
+
+[24.07.2023 | 16 : 44 : 12] sockets: []
+[24.07.2023 | 16 : 44 : 12] players online: 0
+
+[24.07.2023 | 16 : 45 : 16] sockets: ["3BEQqXfkaIS3NHfwAAB9"]
+[24.07.2023 | 16 : 45 : 16] players online: 1
+
+[24.07.2023 | 16 : 45 : 33] sockets: []
+[24.07.2023 | 16 : 45 : 33] players online: 0
+
+[24.07.2023 | 16 : 45 : 38] sockets: ["8eyiYN9gPv3fSHa_AAB_"]
+[24.07.2023 | 16 : 45 : 38] players online: 1
+
+[24.07.2023 | 16 : 46 : 03] sockets: []
+[24.07.2023 | 16 : 46 : 03] players online: 0
+
+[24.07.2023 | 16 : 49 : 00] sockets: []
+[24.07.2023 | 16 : 49 : 00] players online: 0
+
+[24.07.2023 | 16 : 49 : 27] sockets: ["wzyiQ3AM25i6QdNOAACD"]
+[24.07.2023 | 16 : 49 : 27] players online: 1
+
+[24.07.2023 | 16 : 49 : 34] sockets: []
+[24.07.2023 | 16 : 49 : 34] players online: 0
+
+[24.07.2023 | 16 : 49 : 45] sockets: ["8tTHcMqQB5gDuU-rAACF"]
+[24.07.2023 | 16 : 49 : 45] players online: 1
+
+[24.07.2023 | 16 : 49 : 52] sockets: []
+[24.07.2023 | 16 : 49 : 52] players online: 0
+
+[24.07.2023 | 16 : 50 : 22] sockets: ["zsnv59yuYusCM3O-AACH"]
+[24.07.2023 | 16 : 50 : 22] players online: 1
+
+[24.07.2023 | 16 : 50 : 36] sockets: []
+[24.07.2023 | 16 : 50 : 36] players online: 0
+
+[24.07.2023 | 16 : 51 : 47] sockets: []
+[24.07.2023 | 16 : 51 : 47] players online: 0
+
+[24.07.2023 | 16 : 54 : 12] sockets: ["8hsWZRbDpJ5TmX8oAACL"]
+[24.07.2023 | 16 : 54 : 12] players online: 1
+
+[24.07.2023 | 16 : 54 : 15] sockets: []
+[24.07.2023 | 16 : 54 : 15] players online: 0
+
+[24.07.2023 | 16 : 54 : 26] sockets: ["-QkRp-DmWu_-ZJb9AACN"]
+[24.07.2023 | 16 : 54 : 26] players online: 1
+
+[24.07.2023 | 16 : 54 : 28] sockets: []
+[24.07.2023 | 16 : 54 : 28] players online: 0
+
+[24.07.2023 | 16 : 58 : 48] sockets: []
+[24.07.2023 | 16 : 58 : 48] players online: 0
+
+[24.07.2023 | 16 : 59 : 44] sockets: ["-V7veZJX4XLeCuXEAACR"]
+[24.07.2023 | 16 : 59 : 44] players online: 1
+
+[24.07.2023 | 16 : 59 : 54] sockets: []
+[24.07.2023 | 16 : 59 : 54] players online: 0
+
+[24.07.2023 | 17 : 00 : 24] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: 3c58c8d5a7c6b79cdad5670039e58258a01c9c71709a80291902c4815ed0fa95
+
+[24.07.2023 | 17 : 01 : 26] sockets: []
+[24.07.2023 | 17 : 01 : 26] players online: 0
+
+[24.07.2023 | 17 : 01 : 26] CHEATER DETECTED: k3P8UEwq7FSSlo0-AAAB
+[24.07.2023 | 17 : 01 : 26] CHEATER NICKNAME: [PUZ] Cklebepand
+
+[24.07.2023 | 17 : 01 : 26] sockets: []
+[24.07.2023 | 17 : 01 : 26] players online: 0
+
+[24.07.2023 | 17 : 01 : 37] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+[24.07.2023 | 17 : 01 : 37] !WARNING! Crypto Anti-Cheat is OFF!
+crypto main hash: 3c58c8d5a7c6b79cdad5670039e58258a01c9c71709a80291902c4815ed0fa95
+
+[24.07.2023 | 17 : 01 : 45] sockets: ["Cih4GGjTpzMjyzVWAAAB"]
+[24.07.2023 | 17 : 01 : 45] players online: 1
+
+[24.07.2023 | 17 : 01 : 51] sockets: []
+[24.07.2023 | 17 : 01 : 51] players online: 0
+
+[24.07.2023 | 17 : 02 : 35] sockets: ["OWKw7QO8ZN1JOTevAAAD"]
+[24.07.2023 | 17 : 02 : 35] players online: 1
+
+[24.07.2023 | 17 : 03 : 08] sockets: []
+[24.07.2023 | 17 : 03 : 08] players online: 0
