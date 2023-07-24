@@ -40,7 +40,7 @@ class SunLight(Entity):
 
    def update_resolution(self):
       self.dlight.setShadowCaster(True, self.resolution, self.resolution)
-      
+
 window.vsync = False
 window.fullscreen = False
 
@@ -324,8 +324,8 @@ if __name__ == '__main__':
    arab.hide()
    text.hide()
 
-   sun = SunLight(direction = (-0.7, -0.9, 0.5), resolution = 3895, player = player)
-   ambient = AmbientLight(color = Vec4(0.485, 0.5, 0.63, 0) * 1.5)
+   sun = SunLight(direction=(-0.7, -0.9, 0.5), resolution=3955, player=player)
+   ambient = AmbientLight(color=Vec4(0.485, 0.5, 0.63, 0) * 1.5)
 
    render.setShaderAuto()
 

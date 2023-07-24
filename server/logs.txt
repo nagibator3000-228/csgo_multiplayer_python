@@ -1017,3 +1017,7 @@ crypto main hash: 3c58c8d5a7c6b79cdad5670039e58258a01c9c71709a80291902c4815ed0fa
 
 [24.07.2023 | 17 : 03 : 08] sockets: []
 [24.07.2023 | 17 : 03 : 08] players online: 0
+
+[24.07.2023 | 17 : 03 : 44] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: 3c58c8d5a7c6b79cdad5670039e58258a01c9c71709a80291902c4815ed0fa95
