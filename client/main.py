@@ -2,6 +2,9 @@ from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import *
 from direct.actor.Actor import Actor
+from panda3d.core import DirectionalLight
+from physics3d import Debugger, BoxCollider, MeshCollider
+from panda3d.bullet import BulletWorld
 from colorama import init, Fore
 import socketio
 import threading
@@ -9,12 +12,39 @@ import json
 import random
 import hashlib
 import sys
- 
+
 app = Ursina()
+
+world = BulletWorld()
+world.setGravity(Vec3(0, -9.81, 0))
 
 sio = socketio.Client()
 
 init()
+
+class SunLight(Entity):
+   def __init__(self, direction, resolution, player):
+      super().__init__()
+
+      self.player = player
+      self.resolution = resolution
+
+      self.dlight = DirectionalLight("sun")
+      self.dlight.setShadowCaster(True, self.resolution, self.resolution)
+
+      lens = self.dlight.getLens()
+      lens.setNearFar(-80, 200)
+      lens.setFilmSize((100, 100))
+
+      self.dlnp = render.attachNewNode(self.dlight)
+      self.dlnp.lookAt(direction)
+      render.setLight(self.dlnp)
+
+   def update(self):
+      self.dlnp.setPos(self.player.world_position)
+
+   def update_resolution(self):
+      self.dlight.setShadowCaster(True, self.resolution, self.resolution)
 
 window.vsync = False
 window.fullscreen = False
@@ -103,6 +133,9 @@ def update():
       if ray.hit:
          print("hit")
 
+   dt = time.dt
+   world.doPhysics(dt)
+
    # print(phantom_x, phantom_y, phantom_z)
 
 def sit():
@@ -132,7 +165,7 @@ def start_client():
    global solo
 
    if (not solo):
-      sio.connect('http://192.168.178.50:3000')
+      sio.connect('http://192.168.178.50:3000/')
       sio.wait()
 
 @sio.on('disconnect')
@@ -227,11 +260,12 @@ def send_data():
 
       data["data"]["cord"]["x"] = player.x
       data["data"]["cord"]["z"] = player.z
+
       data["data"]["weapon"] = weapon
 
       sio.emit('client_data', json.dumps(data))
       # print("POST")
-
+ 
 def generate_id():
    id_number = random.randint(100000, 999999)
    id_string = "{:06d}".format(id_number)
@@ -291,12 +325,19 @@ if __name__ == '__main__':
    text = Text(parent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
-   block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
+   block = Entity(scale=1, model='cube', position=Vec3(5, 2, 5))
    arab = Entity(scale=.028, rotation=(-90, 0, 0))
    actor = Actor("assets/models/t.glb")
    actor.reparentTo(arab)
    arab.hide()
    text.hide()
+
+   MeshCollider(world, block, mass=1)
+
+   sun = SunLight(direction = (-0.7, -0.9, 0.5), resolution = 3895, player = player)
+   ambient = AmbientLight(color = Vec4(0.485, 0.5, 0.63, 0) * 1.5)
+
+   render.setShaderAuto()
 
    file_path = sys.argv[0]
    file_hash = calculate_file_hash(file_path)

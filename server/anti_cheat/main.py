@@ -132,7 +132,7 @@ def start_client():
    global solo
 
    if (not solo):
-      sio.connect('http://192.168.178.50:3000')
+      sio.connect('http://192.168.178.50:3000/')
       sio.wait()
 
 @sio.on('disconnect')
@@ -231,7 +231,7 @@ def send_data():
 
       sio.emit('client_data', json.dumps(data))
       # print("POST")
-
+ 
 def generate_id():
    id_number = random.randint(100000, 999999)
    id_string = "{:06d}".format(id_number)

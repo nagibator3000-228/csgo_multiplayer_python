@@ -13,7 +13,7 @@ const os = require('os');
 
 app.use(cors({origin: '*'}));
 
-var anti_cheat = true;
+var anti_cheat = false;
 
 var save_to_cloud = true;
 
@@ -138,7 +138,6 @@ io.on("connection", (socket) => {
       if (index !== -1) {
          sockets.sockets.splice(index, 1);
       }
-
       try {
          io.emit("del", sockets.count_of_sockets);
       } catch (e) {
