@@ -1835,3 +1835,165 @@ crypto main hash: cd15ba98ab07871c4a0430dc923dce73a736e2ce63a93b8551c8ff3714ff5c
 
 [26.07.2023 | 16 : 31 : 44] sockets: []
 [26.07.2023 | 16 : 31 : 44] players online: 0
+
+[26.07.2023 | 16 : 32 : 51] sockets: ["n-lvPA0jjx5Er-HfAABz"]
+[26.07.2023 | 16 : 32 : 51] players online: 1
+
+[26.07.2023 | 16 : 33 : 01] sockets: []
+[26.07.2023 | 16 : 33 : 01] players online: 0
+
+[26.07.2023 | 16 : 35 : 42] sockets: ["VVjHlbmofUK5G6maAAB1"]
+[26.07.2023 | 16 : 35 : 42] players online: 1
+
+[26.07.2023 | 16 : 35 : 52] sockets: []
+[26.07.2023 | 16 : 35 : 52] players online: 0
+
+[26.07.2023 | 16 : 36 : 30] sockets: ["ONPhDcgEocidt7dUAAB3"]
+[26.07.2023 | 16 : 36 : 30] players online: 1
+
+[26.07.2023 | 16 : 36 : 49] sockets: []
+[26.07.2023 | 16 : 36 : 49] players online: 0
+
+[26.07.2023 | 16 : 37 : 16] sockets: ["wd90N6OH0BIyifjGAAB5"]
+[26.07.2023 | 16 : 37 : 16] players online: 1
+
+[26.07.2023 | 16 : 37 : 23] sockets: []
+[26.07.2023 | 16 : 37 : 23] players online: 0
+
+[26.07.2023 | 16 : 37 : 56] sockets: ["97czM3SvjpqzXZKwAAB7"]
+[26.07.2023 | 16 : 37 : 56] players online: 1
+
+[26.07.2023 | 16 : 38 : 06] sockets: []
+[26.07.2023 | 16 : 38 : 06] players online: 0
+
+[26.07.2023 | 16 : 38 : 20] sockets: ["cz6V71EEg5U9UAlbAAB9"]
+[26.07.2023 | 16 : 38 : 20] players online: 1
+
+[26.07.2023 | 16 : 38 : 29] sockets: []
+[26.07.2023 | 16 : 38 : 29] players online: 0
+
+[26.07.2023 | 16 : 39 : 14] sockets: ["nUtpP9FdvRJxKt08AAB_"]
+[26.07.2023 | 16 : 39 : 14] players online: 1
+
+[26.07.2023 | 16 : 39 : 25] sockets: []
+[26.07.2023 | 16 : 39 : 25] players online: 0
+
+[26.07.2023 | 16 : 39 : 53] sockets: ["iWatifx9Lm1U-TYFAACB"]
+[26.07.2023 | 16 : 39 : 53] players online: 1
+
+[26.07.2023 | 16 : 39 : 59] sockets: []
+[26.07.2023 | 16 : 39 : 59] players online: 0
+
+[26.07.2023 | 16 : 40 : 10] sockets: ["sT7ss3_LGRCC7uEqAACD"]
+[26.07.2023 | 16 : 40 : 10] players online: 1
+
+[26.07.2023 | 16 : 40 : 15] sockets: []
+[26.07.2023 | 16 : 40 : 15] players online: 0
+
+[26.07.2023 | 16 : 40 : 30] sockets: ["gbtAtfQR4PW8u8mvAACF"]
+[26.07.2023 | 16 : 40 : 30] players online: 1
+
+[26.07.2023 | 16 : 40 : 45] sockets: []
+[26.07.2023 | 16 : 40 : 45] players online: 0
+
+[26.07.2023 | 16 : 41 : 17] sockets: ["Oxwjm9Dze6ep6lXQAACH"]
+[26.07.2023 | 16 : 41 : 17] players online: 1
+
+[26.07.2023 | 16 : 41 : 25] sockets: []
+[26.07.2023 | 16 : 41 : 25] players online: 0
+
+[26.07.2023 | 16 : 42 : 48] sockets: ["YWDLpWERZd4-PxvyAACJ"]
+[26.07.2023 | 16 : 42 : 48] players online: 1
+
+[26.07.2023 | 16 : 42 : 55] sockets: []
+[26.07.2023 | 16 : 42 : 55] players online: 0
+
+[26.07.2023 | 16 : 43 : 55] sockets: ["8KCNG6qyFJ13-0GLAACL"]
+[26.07.2023 | 16 : 43 : 55] players online: 1
+
+[26.07.2023 | 16 : 44 : 02] sockets: []
+[26.07.2023 | 16 : 44 : 02] players online: 0
+
+[26.07.2023 | 16 : 44 : 16] sockets: ["LD9AMW_6LXf-Py_WAACN"]
+[26.07.2023 | 16 : 44 : 16] players online: 1
+
+[26.07.2023 | 16 : 44 : 24] sockets: []
+[26.07.2023 | 16 : 44 : 24] players online: 0
+
+[26.07.2023 | 16 : 44 : 35] sockets: ["rb6KGUKeX1VxmyWGAACP"]
+[26.07.2023 | 16 : 44 : 35] players online: 1
+
+[26.07.2023 | 16 : 44 : 53] sockets: []
+[26.07.2023 | 16 : 44 : 53] players online: 0
+
+[26.07.2023 | 16 : 47 : 10] sockets: ["IIIVA4nHNc92PgVpAACR"]
+[26.07.2023 | 16 : 47 : 10] players online: 1
+
+[26.07.2023 | 16 : 47 : 16] sockets: []
+[26.07.2023 | 16 : 47 : 16] players online: 0
+
+[26.07.2023 | 16 : 47 : 40] sockets: ["SS4PaI5_pLu_NZvEAACT"]
+[26.07.2023 | 16 : 47 : 40] players online: 1
+
+[26.07.2023 | 16 : 47 : 48] sockets: []
+[26.07.2023 | 16 : 47 : 48] players online: 0
+
+[26.07.2023 | 16 : 48 : 00] sockets: ["5OJTay9aZxKFZknAAACV"]
+[26.07.2023 | 16 : 48 : 00] players online: 1
+
+[26.07.2023 | 16 : 48 : 09] sockets: []
+[26.07.2023 | 16 : 48 : 09] players online: 0
+
+[26.07.2023 | 16 : 48 : 19] sockets: ["_lj7gDJc-LrGd_BKAACX"]
+[26.07.2023 | 16 : 48 : 19] players online: 1
+
+[26.07.2023 | 16 : 48 : 32] sockets: []
+[26.07.2023 | 16 : 48 : 32] players online: 0
+
+[26.07.2023 | 16 : 49 : 39] sockets: ["yDQy2e1E2-dEuuikAACZ"]
+[26.07.2023 | 16 : 49 : 39] players online: 1
+
+[26.07.2023 | 16 : 50 : 17] sockets: ["yDQy2e1E2-dEuuikAACZ","dKzLmEZX4iyaDWYmAACb"]
+[26.07.2023 | 16 : 50 : 17] players online: 2
+
+[26.07.2023 | 16 : 50 : 46] sockets: ["yDQy2e1E2-dEuuikAACZ"]
+[26.07.2023 | 16 : 50 : 46] players online: 1
+
+[26.07.2023 | 16 : 50 : 51] sockets: []
+[26.07.2023 | 16 : 50 : 51] players online: 0
+
+[26.07.2023 | 16 : 51 : 17] sockets: ["hkTj1xDBefXnWi-NAACd"]
+[26.07.2023 | 16 : 51 : 17] players online: 1
+
+[26.07.2023 | 16 : 52 : 17] sockets: []
+[26.07.2023 | 16 : 52 : 17] players online: 0
+
+[26.07.2023 | 16 : 52 : 33] sockets: ["KCB2LrLyDHswjL90AACf"]
+[26.07.2023 | 16 : 52 : 33] players online: 1
+
+[26.07.2023 | 16 : 52 : 44] sockets: []
+[26.07.2023 | 16 : 52 : 44] players online: 0
+
+[26.07.2023 | 16 : 52 : 53] sockets: ["MDEFjILf4VXsqYriAACh"]
+[26.07.2023 | 16 : 52 : 53] players online: 1
+
+[26.07.2023 | 16 : 53 : 25] sockets: []
+[26.07.2023 | 16 : 53 : 25] players online: 0
+
+[26.07.2023 | 16 : 53 : 43] sockets: ["mEJ0AhbYEX4cm9l4AACj"]
+[26.07.2023 | 16 : 53 : 43] players online: 1
+
+[26.07.2023 | 16 : 53 : 59] sockets: []
+[26.07.2023 | 16 : 53 : 59] players online: 0
+
+[26.07.2023 | 16 : 54 : 08] sockets: ["kO9ZB_sVRvKj1Ax1AACl"]
+[26.07.2023 | 16 : 54 : 08] players online: 1
+
+[26.07.2023 | 16 : 57 : 04] sockets: ["kO9ZB_sVRvKj1Ax1AACl","OIw0pp9qbPhwaLSpAACn"]
+[26.07.2023 | 16 : 57 : 04] players online: 2
+
+[26.07.2023 | 16 : 57 : 33] sockets: ["kO9ZB_sVRvKj1Ax1AACl"]
+[26.07.2023 | 16 : 57 : 33] players online: 1
+
+[26.07.2023 | 16 : 57 : 41] sockets: []
+[26.07.2023 | 16 : 57 : 41] players online: 0

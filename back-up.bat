@@ -1,5 +1,5 @@
 git status
 git add -u
 git status
-git commit -m "added HP async logic and quiting game"
+git commit -m "weapon, added death, shoot sound"
 git push
