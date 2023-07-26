@@ -3,8 +3,8 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const cors = require('cors');
-// const { exec } = require('child_process');
-// const path = require('path');
+const { exec } = require('child_process');
+const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 const os = require('os');
@@ -15,7 +15,7 @@ app.use(cors({origin: '*'}));
 
 var anti_cheat = false;
 
-var save_to_cloud = false;
+var save_to_cloud = true;
 
 var sockets = {
    sockets: [],
@@ -28,22 +28,22 @@ setInterval(() => {
    console.log(`\nauto log [${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets: ", sockets.sockets, "\nauto log " + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets, '\n');
 }, 1 * 60 * 1000);
 
-// const back_up_file = path.join('auto-back-up.bat');
-// if (save_to_cloud === true) {
-//    setInterval(() => {
-//       exec(back_up_file, (error, stdout, stderr) => {
-//          var date = new Date();
-//          var month = date.getMonth() + 1;
-//          if (error) {
-//             console.error(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + `\u001b[31mError to back up | ${error} | \u001b[0m`);
-//             return;
-//          }
-//          console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "\u001b[32msuccesfull loaded data in back-up\u001b[0m");
-//       });
-//    }, 60 * 60 * 1 * 1000);
-// }
+const back_up_file = path.join('auto-back-up.bat');
+if (save_to_cloud === true) {
+   setInterval(() => {
+      exec(back_up_file, (error, stdout, stderr) => {
+         var date = new Date();
+         var month = date.getMonth() + 1;
+         if (error) {
+            console.error(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + `\u001b[31mError to back up | ${error} | \u001b[0m`);
+            return;
+         }
+         console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "\u001b[32msuccesfull loaded data in back-up\u001b[0m");
+      });
+   }, 60 * 60 * 1 * 1000);
+}
 
-const main_path = 'anti_cheat/main.py'; 
+const main_path = 'anti_cheat/main.py';
 const readStream = fs.createReadStream(main_path);
 const hash = crypto.createHash('sha256');
 
@@ -57,9 +57,9 @@ readStream.on('end', () => {
    const fileHash = hash.digest('hex');
    main_hash = fileHash;
    console.log(`crypto main hash: ${fileHash}`);
-   // fs.writeFile('logs.txt', `\ncrypto main hash: ${fileHash}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
-   //    if (err) throw err;
-   // });
+   fs.writeFile('logs.txt', `\ncrypto main hash: ${fileHash}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
+      if (err) throw err;
+   });
 });
 
 readStream.on('error', (err) => {
@@ -84,9 +84,9 @@ io.on("connection", (socket) => {
          if (parsed_data.socket.hash != main_hash && anti_cheat) {
             await socket.disconnect();
             console.log(`\u001b[31m\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\u001b[0m\n`);
-            // fs.writeFile('logs.txt', `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
-            //    if (err) throw err;
-            // });
+            fs.writeFile('logs.txt', `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
+               if (err) throw err;
+            });
             return;
          }
          socket.join(parsed_data.socket.room);
@@ -101,9 +101,9 @@ io.on("connection", (socket) => {
          var date = new Date();
          var month = date.getMonth() + 1;
          const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] sockets: ${JSON.stringify(sockets.sockets)}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] players online: ${sockets.count_of_sockets}\n`;
-         // fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
-         //    if (err) throw err;
-         // });
+         fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
+            if (err) throw err;
+         });
       }
    });
 
@@ -116,9 +116,9 @@ io.on("connection", (socket) => {
             if (parsed_data.socket.hash != main_hash && anti_cheat) {
                await socket.disconnect();
                console.log(`\u001b[31m\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\u001b[0m\n`);
-               // fs.writeFile('logs.txt', `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
-               //    if (err) throw err;
-               // });
+               fs.writeFile('logs.txt', `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
+                  if (err) throw err;
+               });
                return;
             }
             socket.broadcast.to(parsed_data.socket.room).emit('server_res', JSON.stringify(parsed_data));
@@ -147,14 +147,14 @@ io.on("connection", (socket) => {
          var month = date.getMonth() + 1;
          console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets: ", sockets.sockets, "\n" + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
          const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] sockets: ${JSON.stringify(sockets.sockets)}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] players online: ${sockets.count_of_sockets}\n`;
-         // fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
-         //    if (err) throw err;
-         // });
+         fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
+            if (err) throw err;
+         });
       }
    });
 });
 
-http.listen(5000, () => {
+http.listen(3000, '192.168.178.50', () => {
    console.log("starting...");
    try {
       let date = new Date();
@@ -166,16 +166,16 @@ http.listen(5000, () => {
       var date = new Date();
       var month = date.getMonth() + 1;
       const logString = `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] Server started on port 3000 | system ${os.arch} cpu ${os.availableParallelism} | crypto hash type SHA256\n`;
-      // fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
-      //    if (err) throw err;
-      // });
+      fs.writeFile('logs.txt', logString, {flag: 'a', encoding: 'utf-8'}, (err) => {
+         if (err) throw err;
+      });
       if (anti_cheat) {
          console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]\u001b[32m Crypto Anti-Cheat started. \u001b[33m!SAFETY!\u001b[0m\n`);
       } else {
          console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]\u001b[38;5;202m !WARNING!\u001b[31m Crpypto Anti-Cheat is OFF!\u001b[0m\n`);
-         // fs.writeFile('logs.txt', `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] !WARNING! Crypto Anti-Cheat is OFF!`, {flag: 'a', encoding: 'utf-8'}, (err) => {
-         //    if (err) throw err;
-         // });
+         fs.writeFile('logs.txt', `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] !WARNING! Crypto Anti-Cheat is OFF!`, {flag: 'a', encoding: 'utf-8'}, (err) => {
+            if (err) throw err;
+         });
       }
    }
 });

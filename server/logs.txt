@@ -1410,3 +1410,10 @@ crypto main hash: d391f9e499c8345ada67d2ebae2121ebccad338984c728da9e288e197fa78b
 
 [26.07.2023 | 12 : 10 : 56] sockets: []
 [26.07.2023 | 12 : 10 : 56] players online: 0
+
+[26.07.2023 | 15 : 09 : 28] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+[26.07.2023 | 15 : 09 : 28] !WARNING! Crypto Anti-Cheat is OFF!
+crypto main hash: d391f9e499c8345ada67d2ebae2121ebccad338984c728da9e288e197fa78b2c
+
+[26.07.2023 | 15 : 09 : 36] sockets: ["BhKKzsUBq5a6c5AwAAAB"]
+[26.07.2023 | 15 : 09 : 36] players online: 1

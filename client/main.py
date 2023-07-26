@@ -164,9 +164,9 @@ def stay():
 
 def start_client():
    global solo
- 
+
    if (not solo):
-      sio.connect('https://csgo-server.onrender.com')
+      sio.connect('http://192.168.178.50:3000/')
       sio.wait()
 
 @sio.on('disconnect')
