@@ -10,6 +10,7 @@ import json
 import random
 import hashlib
 import sys
+import time
 
 app = Ursina()
 
@@ -20,7 +21,6 @@ init()
 class SunLight(Entity):
    def __init__(self, direction, resolution, player):
       super().__init__()
-
       self.player = player
       self.resolution = resolution
 
@@ -49,6 +49,9 @@ data_flag = False
 sit_flag = False
 join_flag = False
 
+shoot_tmr = 0
+shoot_interval = 0.15
+
 render_sit_flag = False
 
 solo = False
@@ -69,7 +72,9 @@ data = {
    "player": {
       "team": "",
       "nickname": "",
-      "color": ""
+      "color": "",
+      "health": 100,
+      "oponent_health": 100
    },
    "data": {
       "dir": 0,
@@ -79,10 +84,6 @@ data = {
          "z": 0
       }
    }
-}
-
-game_data = {
-   "health": 100
 }
 
 def calculate_file_hash(file_path):
@@ -98,14 +99,18 @@ def update():
    global rot
    global render_sit_flag
    global solo
+   global shoot_interval
+   global shoot_tmr
 
    if held_keys['left arrow']:
       window.position = Vec2(0, 100)
    elif held_keys['right arrow']:
       window.position = Vec2(1000, 100)
 
-   if (game_data["health"] <= 0 or game_data["health"] > 100):
+   if (data["player"]["health"] <= 0 or data["player"]["health"] > 100):
+      sio.disconnect()
       application.quit()
+      sys.exit()
 
    if (not solo):
       join_room()
@@ -124,9 +129,13 @@ def update():
       player.speed = 3.5
 
    if (mouse.left):
-      ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=True)
-      if ray.hit:
-         print("hit")
+      current_time = time.time()
+      if current_time - shoot_tmr >= shoot_interval:
+         ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=True)
+         if ray.hit:
+            print("hit")
+            data["player"]["oponent_health"] -= 25
+            shoot_tmr = current_time
 
    # print(phantom_x, phantom_y, phantom_z)
 
@@ -165,7 +174,7 @@ def on_disconnect():
    print(Fore.RED + 'Disconnected.')
 
 @sio.on("server_res")
-def get_data(data):
+def get_data(res):
    global phantom_x
    global phantom_y
    global phantom_z
@@ -173,13 +182,15 @@ def get_data(data):
    global solo
 
    if (not solo):
-      decoded_data = json.loads(data)
+      decoded_data = json.loads(res)
 
       phantom_x = decoded_data["data"]["cord"]["x"]
       phantom_y = decoded_data["data"]["cord"]["y"]
       phantom_z = decoded_data["data"]["cord"]["z"]
 
       rot = decoded_data["data"]["dir"]
+
+      data["player"]["health"] = decoded_data["player"]["oponent_health"]
 
       if decoded_data["player"]["color"] == 'green': 
          if text.color != color.green:
@@ -218,11 +229,13 @@ def get_data(data):
 def new_conn(player_count):
    arab.show()
    text.show()
+   data["player"]["oponent_health"] = 100
 
 @sio.on('del')
 def dis_conn(player_count):
    arab.hide()
    text.hide()
+   data["player"]["oponent_health"] = 100
 
 def join_room():
    global join_flag

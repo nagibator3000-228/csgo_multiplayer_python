@@ -1417,3 +1417,39 @@ crypto main hash: d391f9e499c8345ada67d2ebae2121ebccad338984c728da9e288e197fa78b
 
 [26.07.2023 | 15 : 09 : 36] sockets: ["BhKKzsUBq5a6c5AwAAAB"]
 [26.07.2023 | 15 : 09 : 36] players online: 1
+
+[26.07.2023 | 15 : 23 : 44] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+[26.07.2023 | 15 : 23 : 44] !WARNING! Crypto Anti-Cheat is OFF!
+crypto main hash: d391f9e499c8345ada67d2ebae2121ebccad338984c728da9e288e197fa78b2c
+
+[26.07.2023 | 15 : 23 : 54] sockets: ["KDeHWgV7fr4w1cncAAAB"]
+[26.07.2023 | 15 : 23 : 54] players online: 1
+
+[26.07.2023 | 15 : 24 : 27] sockets: []
+[26.07.2023 | 15 : 24 : 27] players online: 0
+
+[26.07.2023 | 15 : 24 : 42] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: d391f9e499c8345ada67d2ebae2121ebccad338984c728da9e288e197fa78b2c
+
+[26.07.2023 | 15 : 24 : 47] sockets: []
+[26.07.2023 | 15 : 24 : 47] players online: 0
+
+[26.07.2023 | 15 : 24 : 47] CHEATER DETECTED: owT6PtdgTVb5Gu0QAAAB
+[26.07.2023 | 15 : 24 : 47] CHEATER NICKNAME: [PUZ] Cklebepand
+
+[26.07.2023 | 15 : 24 : 47] sockets: []
+[26.07.2023 | 15 : 24 : 47] players online: 0
+
+[26.07.2023 | 15 : 25 : 24] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: cd15ba98ab07871c4a0430dc923dce73a736e2ce63a93b8551c8ff3714ff5ced
+
+[26.07.2023 | 15 : 26 : 08] sockets: []
+[26.07.2023 | 15 : 26 : 08] players online: 0
+
+[26.07.2023 | 15 : 26 : 12] sockets: ["y_Nddtpz6wMCLAK7AAAD"]
+[26.07.2023 | 15 : 26 : 12] players online: 1
+
+[26.07.2023 | 15 : 26 : 33] sockets: []
+[26.07.2023 | 15 : 26 : 33] players online: 0
