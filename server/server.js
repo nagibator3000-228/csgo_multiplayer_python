@@ -13,7 +13,7 @@ const os = require('os');
 
 app.use(cors({origin: '*'}));
 
-var anti_cheat = true;
+var anti_cheat = false;
 
 var save_to_cloud = true;
 

@@ -50,7 +50,7 @@ sit_flag = False
 join_flag = False
 
 shoot_tmr = 0
-shoot_interval = 0.15
+shoot_interval = 0.26
 
 render_sit_flag = False
 
@@ -131,11 +131,19 @@ def update():
    if (mouse.left):
       current_time = time.time()
       if current_time - shoot_tmr >= shoot_interval:
-         ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=True)
-         if ray.hit:
+         ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=False)
+         bullet = Entity(parent=player, model='cube', scale=.1, color=color.black)
+         bullet.world_parent = scene
+         bullet.animate_position(bullet.position+(bullet.forward*1000)*time.dt*900, curve=curve.linear, duration=10)
+         destroy(bullet, delay=10)
+         deagle = Audio("assets/sounds/deagle.mp3", autoplay=True)
+         if ray.hit and ray.entity != wall:
             print("hit")
             data["player"]["oponent_health"] -= 25
-            shoot_tmr = current_time
+            destroy(bullet, delay=0)
+         if ray.entity == wall:
+            destroy(bullet, delay=0)
+         shoot_tmr = current_time
 
    # print(phantom_x, phantom_y, phantom_z)
 
@@ -331,11 +339,19 @@ if __name__ == '__main__':
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
    block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
+   wall = Entity(scale=7, scale_x=1, model='cube', collider='box', position=Vec3(7, 2, 5))
    arab = Entity(scale=.028, rotation=(-90, 0, 0))
    actor = Actor("assets/models/t.glb")
    actor.reparentTo(arab)
    arab.hide()
    text.hide()
+
+   player.gun = None
+   gun_ = Entity(origin_y=-.5, position=(3,0,3), scale=(.2,.2,1))
+   gun = Actor('assets/models/deagle.glb')
+   gun.reparentTo(gun_)
+   # gun_.position = Vec3(.5,0,.5)
+   # print(gun.getAnimNames)
 
    sun = SunLight(direction=(-0.7, -0.9, 0.5), resolution=3955, player=player)
    ambient = AmbientLight(color=Vec4(0.485, 0.5, 0.63, 0) * 1.5)
