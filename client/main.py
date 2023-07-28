@@ -83,6 +83,9 @@ data = {
          "y": 0,
          "z": 0
       }
+   },
+   "game": {
+      "death": False,
    }
 }
 
@@ -108,6 +111,8 @@ def update():
       window.position = Vec2(1000, 100)
 
    if (data["player"]["health"] <= 0 or data["player"]["health"] > 100):
+      data["game"]["death"] = True
+      send_data()
       sio.disconnect()
       application.quit()
       sys.exit()
@@ -137,6 +142,7 @@ def update():
          bullet.animate_position(bullet.position+(bullet.forward*1000)*time.dt*900, curve=curve.linear, duration=10)
          destroy(bullet, delay=10)
          deagle = Audio("assets/sounds/deagle.mp3", autoplay=True)
+         deagle.volume = 0.55
          if ray.hit and ray.entity != wall:
             print("hit")
             data["player"]["oponent_health"] -= 10
@@ -181,6 +187,27 @@ def start_client():
 def on_disconnect():
    print(Fore.RED + 'Disconnected.')
 
+@sio.on('new')
+def new_conn(player_count):
+   arab.show()
+   text.show()
+   data["player"]["oponent_health"] = 100
+
+@sio.on('del')
+def dis_conn(player_count):
+   arab.hide()
+   text.hide()
+   data["player"]["oponent_health"] = 100
+
+def join_room():
+   global join_flag
+   global solo
+
+   if (not join_flag and not solo):
+      sio.emit("join", json.dumps(data))
+      join_flag = True
+
+
 @sio.on("server_res")
 def get_data(res):
    global phantom_x
@@ -199,6 +226,11 @@ def get_data(res):
       rot = decoded_data["data"]["dir"]
 
       data["player"]["health"] = decoded_data["player"]["oponent_health"]
+
+      if decoded_data["game"]["death"] == True:
+         ez.volume *= 2
+         ez.play()
+         print("death")
 
       if decoded_data["player"]["color"] == 'green': 
          if text.color != color.green:
@@ -232,26 +264,6 @@ def get_data(res):
       text.position = Vec3(phantom_x, phantom_y + 2.25, phantom_z)
 
       # print(Fore.GREEN + "GET", Fore.WHITE)
-
-@sio.on('new')
-def new_conn(player_count):
-   arab.show()
-   text.show()
-   data["player"]["oponent_health"] = 100
-
-@sio.on('del')
-def dis_conn(player_count):
-   arab.hide()
-   text.hide()
-   data["player"]["oponent_health"] = 100
-
-def join_room():
-   global join_flag
-   global solo
-
-   if (not join_flag and not solo):
-      sio.emit("join", json.dumps(data))
-      join_flag = True
 
 def send_data():
    global weapon
@@ -317,6 +329,8 @@ if __name__ == '__main__':
    update_thread.start()
    send_thread.start()
 
+   ez = Audio("assets/sounds/IZIFORENZ.mp3", autoplay=False)
+
    with open("settings.json", "r") as file:
       parsed_data = json.load(file)
       data["player"]["team"] = parsed_data["settings"]["team"]
@@ -361,19 +375,6 @@ if __name__ == '__main__':
 
    # print(player.position)
 
-   # if flag:
-   #    arab.rotation_x = arab.rotation_x - 4 * time.dt * 10
-   #    print(arab.rotation_x)
-   #    if (arab.rotation_x < -180):
-   #       flag = False
-   #       arab.hide()
-   #       death = Audio("assets/sounds/death.mp3", autoplay=True)
-
-
-   # global flag
-
-   # if held_keys['q']:
-   #    flag = True
 
    # if h == False:
    #    data["data"]["dir"] = player.rotation_y + 180
