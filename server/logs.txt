@@ -1,2 +1,12 @@
 __LOGS__
 
+
+[28.07.2023 | 11 : 58 : 25] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: 03e73fca936e4d86774005d0dcc0729d43c9f2c465f300100312835999816a29
+
+[28.07.2023 | 11 : 58 : 29] sockets: ["6DQLq96RcerAGMJIAAAB"]
+[28.07.2023 | 11 : 58 : 29] players online: 1
+
+[28.07.2023 | 11 : 58 : 54] sockets: []
+[28.07.2023 | 11 : 58 : 54] players online: 0
