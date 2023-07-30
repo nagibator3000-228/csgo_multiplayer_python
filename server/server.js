@@ -81,7 +81,7 @@ io.on("connection", (socket) => {
          let parsed_data = JSON.parse(data);
          var date = new Date();
          var month = date.getMonth() + 1;
-         if (parsed_data.socket.hash != main_hash && anti_cheat) {
+         if (parsed_data.socket.hash !== main_hash && anti_cheat) {
             await socket.disconnect();
             console.log(`\u001b[31m\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\u001b[0m\n`);
             fs.writeFile('logs.txt', `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
@@ -126,6 +126,12 @@ io.on("connection", (socket) => {
             console.error(new Error(`ERROR 502 | ${e}`));
          }
       }
+   });
+
+   socket.on("kill", (kill) => {
+      kill_form = JSON.parse(kill);
+      console.log(`${kill_form.who} killed ${kill_form.when} with ${kill_form.with}`);
+      io.in(kill_form.room).emit('chat', JSON.stringify(kill_form));
    });
 
    socket.on("disconnect", () => {

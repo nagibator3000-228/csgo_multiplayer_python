@@ -89,6 +89,13 @@ data = {
    }
 }
 
+kill = {
+   "who": "",
+   "when": "",
+   "with": "",
+   "room": ""
+}
+
 def calculate_file_hash(file_path):
    with open(file_path, 'rb') as file:
       data = file.read()
@@ -230,6 +237,7 @@ def get_data(res):
       if decoded_data["game"]["death"] == True:
          ez.volume *= 2
          ez.play()
+         send_kill(decoded_data["player"]["nickname"])
          print("death")
 
       if decoded_data["player"]["color"] == 'green': 
@@ -290,6 +298,26 @@ def send_data():
 
       sio.emit('client_data', json.dumps(data))
       # print("POST")
+
+@sio.on("chat")
+def log(chat_log):
+   decoded_chat = json.loads(chat_log)
+   print(decoded_chat)
+   chat_text = decoded_chat["who"] + " killed " + decoded_chat["when"] + " with " + decoded_chat["with"]
+   chat.text = chat_text
+   invoke(clear_chat, delay=5)
+
+def clear_chat():
+   chat.text = ""
+
+def send_kill(nickname):
+   if (not solo):
+      kill["who"] = data["player"]["nickname"]
+      kill["when"] = nickname
+      kill["with"] = "desert eagle"
+      kill["room"] = data["socket"]["room"]
+
+      sio.emit("kill", json.dumps(kill))
  
 def generate_id():
    id_number = random.randint(100000, 999999)
@@ -349,7 +377,8 @@ if __name__ == '__main__':
             cursor_path = cursor_path.replace("'", "")
             player.cursor.texture = cursor_path
 
-   text = Text(parent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
+   text = Text(parrent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
+   chat = Text(parrent=camera, scale=1, color=color.red, origin=(-0.6, -16.3))
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
    block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
