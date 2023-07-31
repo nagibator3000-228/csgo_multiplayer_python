@@ -499,3 +499,105 @@ crypto main hash: c32f8fafa3e21737e1c0181dffeec8f6e71821df349f470766f7faeb63615e
 
 [31.07.2023 | 11 : 55 : 01] sockets: []
 [31.07.2023 | 11 : 55 : 01] players online: 0
+
+[31.07.2023 | 19 : 01 : 23] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: c32f8fafa3e21737e1c0181dffeec8f6e71821df349f470766f7faeb63615e44
+
+[31.07.2023 | 19 : 02 : 23] sockets: ["MVm4ZpIOljU9CSf9AAAB"]
+[31.07.2023 | 19 : 02 : 23] players online: 1
+
+[31.07.2023 | 19 : 03 : 15] sockets: ["MVm4ZpIOljU9CSf9AAAB","90-IEFU-EJfAhheiAAAD"]
+[31.07.2023 | 19 : 03 : 15] players online: 2
+
+[31.07.2023 | 19 : 05 : 40] sockets: ["MVm4ZpIOljU9CSf9AAAB"]
+[31.07.2023 | 19 : 05 : 40] players online: 1
+
+[31.07.2023 | 19 : 07 : 21] sockets: ["MVm4ZpIOljU9CSf9AAAB","K940C3vt5GOOzoDUAAAF"]
+[31.07.2023 | 19 : 07 : 21] players online: 2
+
+[31.07.2023 | 19 : 07 : 26] sockets: ["MVm4ZpIOljU9CSf9AAAB"]
+[31.07.2023 | 19 : 07 : 26] players online: 1
+
+[31.07.2023 | 19 : 07 : 36] sockets: ["MVm4ZpIOljU9CSf9AAAB","4W4z53sfUmPud6sUAAAH"]
+[31.07.2023 | 19 : 07 : 36] players online: 2
+
+[31.07.2023 | 19 : 24 : 36] sockets: ["MVm4ZpIOljU9CSf9AAAB"]
+[31.07.2023 | 19 : 24 : 36] players online: 1
+
+[31.07.2023 | 19 : 24 : 48] sockets: []
+[31.07.2023 | 19 : 24 : 48] players online: 0
+
+[31.07.2023 | 23 : 56 : 38] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: c32f8fafa3e21737e1c0181dffeec8f6e71821df349f470766f7faeb63615e44
+
+[31.07.2023 | 23 : 57 : 03] sockets: ["e7MP9jHDW6FvuD6dAAAB"]
+[31.07.2023 | 23 : 57 : 03] players online: 1
+
+[31.07.2023 | 23 : 57 : 19] sockets: ["e7MP9jHDW6FvuD6dAAAB","PHRFd9DI976c_aZyAAAD"]
+[31.07.2023 | 23 : 57 : 19] players online: 2
+
+[31.07.2023 | 23 : 58 : 24] sockets: ["PHRFd9DI976c_aZyAAAD"]
+[31.07.2023 | 23 : 58 : 24] players online: 1
+
+[31.07.2023 | 23 : 59 : 04] sockets: ["PHRFd9DI976c_aZyAAAD","OfqNN9zvmqALssPsAAAF"]
+[31.07.2023 | 23 : 59 : 04] players online: 2
+
+[31.07.2023 | 23 : 59 : 25] sockets: ["OfqNN9zvmqALssPsAAAF"]
+[31.07.2023 | 23 : 59 : 25] players online: 1
+
+[01.08.2023 | 00 : 00 : 03] sockets: ["OfqNN9zvmqALssPsAAAF","P9J1vhGQpZXKSKSXAAAH"]
+[01.08.2023 | 00 : 00 : 03] players online: 2
+
+[01.08.2023 | 00 : 00 : 23] sockets: ["OfqNN9zvmqALssPsAAAF"]
+[01.08.2023 | 00 : 00 : 23] players online: 1
+
+[01.08.2023 | 00 : 00 : 43] sockets: ["OfqNN9zvmqALssPsAAAF","kyG5azdloLwwxgTDAAAJ"]
+[01.08.2023 | 00 : 00 : 43] players online: 2
+
+[01.08.2023 | 00 : 01 : 58] sockets: ["kyG5azdloLwwxgTDAAAJ"]
+[01.08.2023 | 00 : 01 : 58] players online: 1
+
+[01.08.2023 | 00 : 03 : 06] sockets: []
+[01.08.2023 | 00 : 03 : 06] players online: 0
+
+[01.08.2023 | 00 : 06 : 03] sockets: ["GrW3oU1QCne_gB37AAAL"]
+[01.08.2023 | 00 : 06 : 03] players online: 1
+
+[01.08.2023 | 00 : 06 : 20] sockets: ["GrW3oU1QCne_gB37AAAL","q5LHS6AN-fQvPPSJAAAN"]
+[01.08.2023 | 00 : 06 : 20] players online: 2
+
+[01.08.2023 | 00 : 06 : 37] sockets: ["GrW3oU1QCne_gB37AAAL","q5LHS6AN-fQvPPSJAAAN","wVpX1yuJcH8WyTqlAAAP"]
+[01.08.2023 | 00 : 06 : 37] players online: 3
+
+[01.08.2023 | 00 : 07 : 18] sockets: ["GrW3oU1QCne_gB37AAAL","q5LHS6AN-fQvPPSJAAAN"]
+[01.08.2023 | 00 : 07 : 18] players online: 2
+
+[01.08.2023 | 00 : 07 : 36] sockets: ["q5LHS6AN-fQvPPSJAAAN"]
+[01.08.2023 | 00 : 07 : 36] players online: 1
+
+[01.08.2023 | 00 : 07 : 36] sockets: []
+[01.08.2023 | 00 : 07 : 36] players online: 0
+
+[01.08.2023 | 00 : 12 : 25] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: c32f8fafa3e21737e1c0181dffeec8f6e71821df349f470766f7faeb63615e44
+
+[01.08.2023 | 00 : 12 : 33] sockets: ["1dS9iich8YAOtPkiAAAB"]
+[01.08.2023 | 00 : 12 : 33] players online: 1
+
+[01.08.2023 | 00 : 12 : 41] sockets: ["1dS9iich8YAOtPkiAAAB","3tUElBIraVks7SbaAAAD"]
+[01.08.2023 | 00 : 12 : 41] players online: 2
+
+[01.08.2023 | 00 : 13 : 01] sockets: ["1dS9iich8YAOtPkiAAAB","3tUElBIraVks7SbaAAAD","SYbbTPMAtiW59hsYAAAF"]
+[01.08.2023 | 00 : 13 : 01] players online: 3
+
+[01.08.2023 | 00 : 13 : 21] sockets: ["1dS9iich8YAOtPkiAAAB","3tUElBIraVks7SbaAAAD"]
+[01.08.2023 | 00 : 13 : 21] players online: 2
+
+[01.08.2023 | 00 : 13 : 30] sockets: ["3tUElBIraVks7SbaAAAD"]
+[01.08.2023 | 00 : 13 : 30] players online: 1
+
+[01.08.2023 | 00 : 13 : 31] sockets: []
+[01.08.2023 | 00 : 13 : 31] players online: 0

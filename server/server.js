@@ -108,11 +108,13 @@ io.on("connection", (socket) => {
    });
 
    socket.on("client_data", async (data) => {
-      if (sockets.count_of_sockets >= 2) {
+      let parsed_data = JSON.parse(data);
+      const room = io.sockets.adapter.rooms.get(parsed_data.socket.room);
+      const playerCount = room ? room.size : 0;
+      if (playerCount >= 2) {
          var date = new Date();
          var month = date.getMonth() + 1;
          try {
-            let parsed_data = JSON.parse(data);
             if (parsed_data.socket.hash != main_hash && anti_cheat) {
                await socket.disconnect();
                console.log(`\u001b[31m\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\u001b[0m\n`);
