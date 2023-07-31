@@ -471,3 +471,31 @@ crypto main hash: 03e73fca936e4d86774005d0dcc0729d43c9f2c465f300100312835999816a
 
 [31.07.2023 | 00 : 36 : 25] sockets: []
 [31.07.2023 | 00 : 36 : 25] players online: 0
+
+[31.07.2023 | 11 : 49 : 35] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: c32f8fafa3e21737e1c0181dffeec8f6e71821df349f470766f7faeb63615e44
+
+[31.07.2023 | 11 : 50 : 05] sockets: ["R1Aw61uy7hNYHzs7AAAB"]
+[31.07.2023 | 11 : 50 : 05] players online: 1
+
+[31.07.2023 | 11 : 50 : 24] sockets: ["R1Aw61uy7hNYHzs7AAAB","kyBZpky04D1XvVfdAAAD"]
+[31.07.2023 | 11 : 50 : 24] players online: 2
+
+[31.07.2023 | 11 : 52 : 19] sockets: ["kyBZpky04D1XvVfdAAAD"]
+[31.07.2023 | 11 : 52 : 19] players online: 1
+
+[31.07.2023 | 11 : 53 : 03] sockets: ["kyBZpky04D1XvVfdAAAD","-euJt7RwWnxtqsmQAAAF"]
+[31.07.2023 | 11 : 53 : 03] players online: 2
+
+[31.07.2023 | 11 : 54 : 30] sockets: ["kyBZpky04D1XvVfdAAAD"]
+[31.07.2023 | 11 : 54 : 30] players online: 1
+
+[31.07.2023 | 11 : 54 : 36] sockets: ["kyBZpky04D1XvVfdAAAD","NeDFyd2JaY1jLS_5AAAH"]
+[31.07.2023 | 11 : 54 : 36] players online: 2
+
+[31.07.2023 | 11 : 54 : 52] sockets: ["NeDFyd2JaY1jLS_5AAAH"]
+[31.07.2023 | 11 : 54 : 52] players online: 1
+
+[31.07.2023 | 11 : 55 : 01] sockets: []
+[31.07.2023 | 11 : 55 : 01] players online: 0
