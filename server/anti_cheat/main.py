@@ -147,12 +147,10 @@ def update():
          bullet = Entity(parent=camera, model='cube', scale=.1, color=color.black)
          bullet.world_parent = scene
          bullet.animate_position(bullet.position+(bullet.forward*1000)*time.dt*900, curve=curve.linear, duration=10)
-         destroy(bullet, delay=10)
-         deagle = Audio("assets/sounds/deagle.mp3", autoplay=True)
-         deagle.volume = 0.55
+         destroy(bullet, delay=7)
+         deagle = Audio("assets/sounds/deagle.mp3", autoplay=True, volume = 0.55)
          if ray.hit and ray.entity != wall:
-            print("hit")
-            data["player"]["oponent_health"] -= 10
+            data["player"]["oponent_health"] -= 20
             destroy(bullet, delay=0.1)
          if ray.entity == wall:
             destroy(bullet, delay=0.1)
@@ -213,7 +211,6 @@ def join_room():
    if (not join_flag and not solo):
       sio.emit("join", json.dumps(data))
       join_flag = True
-
 
 @sio.on("server_res")
 def get_data(res):
@@ -302,8 +299,7 @@ def send_data():
 @sio.on("chat")
 def log(chat_log):
    decoded_chat = json.loads(chat_log)
-   print(decoded_chat)
-   chat_text = decoded_chat["who"] + " killed " + decoded_chat["when"] + " with " + decoded_chat["with"]
+   chat_text = decoded_chat["who"] + " was killed by " + decoded_chat["when"] + " with " + decoded_chat["with"]
    chat.text = chat_text
    invoke(clear_chat, delay=5)
 
@@ -330,10 +326,11 @@ if __name__ == '__main__':
    player.cursor.rotation_z = 0
    player.cursor.color = color.black
    player.cursor.size = .05
+   player.gravity = 0.9
 
    Sky()
 
-   print("\n\n\n\n 1. create room | 2. join room \n print 1 or 2 and press enter to generate room id.")
+   print("\n\n\n\n 1. create room | 2. join room \n print 1 or 2 and play.")
    mode = input()
 
    if mode == '1':

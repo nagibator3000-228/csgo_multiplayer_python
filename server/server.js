@@ -56,7 +56,7 @@ readStream.on('data', (data) => {
 readStream.on('end', () => {
    const fileHash = hash.digest('hex');
    main_hash = fileHash;
-   console.log(`crypto main hash: ${fileHash}`);
+   console.log(`crypto main hash: ${fileHash}\n`);
    fs.writeFile('logs.txt', `\ncrypto main hash: ${fileHash}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
       if (err) throw err;
    });
@@ -115,7 +115,7 @@ io.on("connection", (socket) => {
          var date = new Date();
          var month = date.getMonth() + 1;
          try {
-            if (parsed_data.socket.hash != main_hash && anti_cheat) {
+            if (parsed_data.socket.hash !== main_hash && anti_cheat) {
                await socket.disconnect();
                console.log(`\u001b[31m\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\u001b[0m\n`);
                fs.writeFile('logs.txt', `\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER DETECTED: ${socket.id}\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}] CHEATER NICKNAME: ${parsed_data.player.nickname}\n`, {flag: 'a', encoding: 'utf-8'}, (err) => {
@@ -132,7 +132,7 @@ io.on("connection", (socket) => {
 
    socket.on("kill", (kill) => {
       kill_form = JSON.parse(kill);
-      console.log(`${kill_form.who} killed ${kill_form.when} with ${kill_form.with}`);
+      console.log(`\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + `room ${kill_form.room} >> ` + `\u001b[31m${kill_form.who} was killed by ${kill_form.when} with ${kill_form.with}\u001b[0m`);
       io.in(kill_form.room).emit('chat', JSON.stringify(kill_form));
    });
 
