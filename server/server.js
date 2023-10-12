@@ -13,7 +13,7 @@ const os = require('os');
 
 app.use(cors({origin: '*'}));
 
-var anti_cheat = true;
+var anti_cheat = false;
 
 var save_to_cloud = true;
 
@@ -90,11 +90,13 @@ io.on("connection", (socket) => {
             return;
          }
          socket.join(parsed_data.socket.room);
+         socket.join(socket.id);
          const room = io.sockets.adapter.rooms.get(parsed_data.socket.room);
          const playerCount = room ? room.size : 0;
          if (playerCount >= 2) {
             io.in(parsed_data.socket.room).emit('new', sockets.count_of_sockets);
          }
+         io.to(socket.id).emit('joined', sockets.count_of_sockets);
       } catch (e) {
          console.error(new Error(`ERROR 502 | ${e}`));
       } finally {
@@ -131,7 +133,7 @@ io.on("connection", (socket) => {
    });
 
    socket.on("kill", (kill) => {
-      kill_form = JSON.parse(kill);
+      let kill_form = JSON.parse(kill);
       console.log(`\n[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + `room ${kill_form.room} >> ` + `\u001b[31m${kill_form.who} was killed by ${kill_form.when} with ${kill_form.with}\u001b[0m`);
       io.in(kill_form.room).emit('chat', JSON.stringify(kill_form));
    });

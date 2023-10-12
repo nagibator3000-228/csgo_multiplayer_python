@@ -18,6 +18,9 @@ sio = socketio.Client()
 
 init()
 
+players = []
+
+
 class SunLight(Entity):
    def __init__(self, direction, resolution, player):
       super().__init__()
@@ -40,6 +43,7 @@ class SunLight(Entity):
 
    def update_resolution(self):
       self.dlight.setShadowCaster(True, self.resolution, self.resolution)
+
 
 window.vsync = False
 window.fullscreen = False
@@ -67,7 +71,8 @@ data = {
    "socket": {
       "id": "",
       "room": "",
-      "hash": ""
+      "hash": "",
+      "num": 0
    },
    "player": {
       "team": "",
@@ -96,11 +101,13 @@ kill = {
    "room": ""
 }
 
+
 def calculate_file_hash(file_path):
    with open(file_path, 'rb') as file:
       data = file.read()
       file_hash = hashlib.sha256(data).hexdigest()
       return file_hash
+
 
 def update():
    global phantom_x
@@ -128,8 +135,8 @@ def update():
       join_room()
       send_data()
 
-      arab.position = Vec3(phantom_x, phantom_y, phantom_z)
-      arab.rotation = (-90, rot, 0)
+      # arab.position = Vec3(phantom_x, phantom_y, phantom_z)
+      # arab.rotation = (-90, rot, 0)
 
    if held_keys['left control'] and sit_flag == False:
       sit()
@@ -143,12 +150,15 @@ def update():
    if (mouse.left):
       current_time = time.time()
       if current_time - shoot_tmr >= shoot_interval:
-         ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=False)
-         bullet = Entity(parent=camera, model='cube', scale=.1, color=color.black)
+         ray = raycast(origin=camera.world_position, direction=camera.forward,
+                       distance=500, ignore=[camera, player, ground, text], debug=False)
+         bullet = Entity(parent=camera, model='cube',
+                         scale=.1, color=color.black)
          bullet.world_parent = scene
-         bullet.animate_position(bullet.position+(bullet.forward*1000)*time.dt*900, curve=curve.linear, duration=10)
+         bullet.animate_position(
+             bullet.position+(bullet.forward*1000)*time.dt*900, curve=curve.linear, duration=10)
          destroy(bullet, delay=7)
-         deagle = Audio("assets/sounds/deagle.mp3", autoplay=True, volume = 0.55)
+         deagle = Audio("assets/sounds/deagle.mp3", autoplay=True, volume=0.55)
          if ray.hit and ray.entity != wall:
             data["player"]["oponent_health"] -= 20
             destroy(bullet, delay=0.1)
@@ -157,6 +167,7 @@ def update():
          shoot_tmr = current_time
 
    # print(phantom_x, phantom_y, phantom_z)
+
 
 def sit():
    player.camera_pivot.y = 2 - held_keys['left control']
@@ -168,6 +179,7 @@ def sit():
       player.jump_height = 0
    else:
       player.jump_height = 1.5
+
 
 def stay():
    global render_sit_flag
@@ -194,15 +206,21 @@ def on_disconnect():
 
 @sio.on('new')
 def new_conn(player_count):
-   arab.show()
-   text.show()
-   data["player"]["oponent_health"] = 100
+   e = Entity(scale=.028, rotation=(-90, 0, 0))
+   actor = Actor("assets/models/t.glb")
+   actor.reparentTo(e)
+   players.append(e)
+   print(Fore.GREEN + "NEW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + Fore.WHITE)
 
-@sio.on('del')
-def dis_conn(player_count):
-   arab.hide()
-   text.hide()
-   data["player"]["oponent_health"] = 100
+@sio.on('joined')
+def joined(player_count):
+   print(Fore.GREEN + "joined!!" + Fore.WHITE)
+   data["socket"]["num"] = player_count - 1
+   print(Fore.GREEN + str(data["socket"]["num"]) + Fore.WHITE)
+   print(Fore.GREEN + str(players) + Fore.WHITE)
+
+# @sio.on('del')
+# def dis_conn(player_count):
 
 def join_room():
    global join_flag
@@ -223,6 +241,8 @@ def get_data(res):
    if (not solo):
       decoded_data = json.loads(res)
 
+      print(Fore.GREEN + str(decoded_data["socket"]["num"]) + Fore.WHITE)
+
       phantom_x = decoded_data["data"]["cord"]["x"]
       phantom_y = decoded_data["data"]["cord"]["y"]
       phantom_z = decoded_data["data"]["cord"]["z"]
@@ -230,6 +250,14 @@ def get_data(res):
       rot = decoded_data["data"]["dir"]
 
       data["player"]["health"] = decoded_data["player"]["oponent_health"]
+      fantom_number = decoded_data["socket"]["num"]
+
+      e = players[fantom_number]
+
+      print(Fore.GREEN + str(e) + Fore.WHITE)
+
+      e.position = Vec3(phantom_x, phantom_y, phantom_z)
+      e.rotation_y = rot
 
       if decoded_data["game"]["death"] == True:
          ez.volume *= 2
@@ -237,36 +265,36 @@ def get_data(res):
          send_kill(decoded_data["player"]["nickname"])
          print("death")
 
-      if decoded_data["player"]["color"] == 'green': 
-         if text.color != color.green:
-            text.color = color.green
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'red': 
-         if text.color != color.red:
-            text.color = color.red
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'orange': 
-         if text.color != color.orange:
-            text.color = color.orange
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'yellow': 
-         if text.color != color.yellow:
-            text.color = color.yellow
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'blue': 
-         if text.color != color.blue:
-            text.color = color.blue
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'purple': 
-         if text.color != color.pink:
-            text.color = color.pink
-            text.text = decoded_data["player"]["nickname"]
-      else: 
-         if text.color != color.white:
-            text.color = color.white
-            text.text = decoded_data["player"]["nickname"]
+      # if decoded_data["player"]["color"] == 'green': 
+      #    if text.color != color.green:
+      #       text.color = color.green
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'red': 
+      #    if text.color != color.red:
+      #       text.color = color.red
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'orange': 
+      #    if text.color != color.orange:
+      #       text.color = color.orange
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'yellow': 
+      #    if text.color != color.yellow:
+      #       text.color = color.yellow
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'blue': 
+      #    if text.color != color.blue:
+      #       text.color = color.blue
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'purple': 
+      #    if text.color != color.pink:
+      #       text.color = color.pink
+      #       text.text = decoded_data["player"]["nickname"]
+      # else: 
+      #    if text.color != color.white:
+      #       text.color = color.white
+      #       text.text = decoded_data["player"]["nickname"]
 
-      text.position = Vec3(phantom_x, phantom_y + 2.25, phantom_z)
+      # text.position = Vec3(phantom_x, phantom_y + 2.25, phantom_z)
 
       # print(Fore.GREEN + "GET", Fore.WHITE)
 
@@ -380,11 +408,6 @@ if __name__ == '__main__':
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
    block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
    wall = Entity(scale=7, scale_x=1, model='cube', collider='box', position=Vec3(7, 2, 5))
-   arab = Entity(scale=.028, rotation=(-90, 0, 0))
-   actor = Actor("assets/models/t.glb")
-   actor.reparentTo(arab)
-   arab.hide()
-   text.hide()
 
    sun = SunLight(direction=(-0.7, -0.9, 0.5), resolution=3955, player=player)
    ambient = AmbientLight(color=Vec4(0.485, 0.5, 0.63, 0) * 1.5)
