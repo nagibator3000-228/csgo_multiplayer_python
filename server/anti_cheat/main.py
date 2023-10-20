@@ -16,7 +16,11 @@ app = Ursina()
 
 sio = socketio.Client()
 
+window.cog_menu = False
+
 init()
+
+players = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
 class SunLight(Entity):
    def __init__(self, direction, resolution, player):
@@ -41,8 +45,7 @@ class SunLight(Entity):
    def update_resolution(self):
       self.dlight.setShadowCaster(True, self.resolution, self.resolution)
 
-window.vsync = False
-window.fullscreen = False
+ip = ""
 
 flag = False
 data_flag = False
@@ -53,6 +56,10 @@ shoot_tmr = 0
 shoot_interval = 0.26
 
 render_sit_flag = False
+
+conn_counter = 0
+
+resolution = 3955
 
 solo = False
 
@@ -67,7 +74,8 @@ data = {
    "socket": {
       "id": "",
       "room": "",
-      "hash": ""
+      "hash": "",
+      "num": 0
    },
    "player": {
       "team": "",
@@ -102,6 +110,7 @@ def calculate_file_hash(file_path):
       file_hash = hashlib.sha256(data).hexdigest()
       return file_hash
 
+
 def update():
    global phantom_x
    global phantom_y
@@ -111,6 +120,8 @@ def update():
    global solo
    global shoot_interval
    global shoot_tmr
+
+   print(players)
 
    if held_keys['left arrow']:
       window.position = Vec2(0, 100)
@@ -125,11 +136,11 @@ def update():
       sys.exit()
 
    if (not solo):
-      join_room()
+      whats_my_number()
       send_data()
 
-      arab.position = Vec3(phantom_x, phantom_y, phantom_z)
-      arab.rotation = (-90, rot, 0)
+      # arab.position = Vec3(phantom_x, phantom_y, phantom_z)
+      # arab.rotation = (-90, rot, 0)
 
    if held_keys['left control'] and sit_flag == False:
       sit()
@@ -142,17 +153,20 @@ def update():
 
    if (mouse.left):
       current_time = time.time()
-      if current_time - shoot_tmr >= shoot_interval:
-         ray = raycast(origin=camera.world_position, direction=camera.forward, distance=500, ignore=[camera, player, ground, text], debug=False)
-         bullet = Entity(parent=camera, model='cube', scale=.1, color=color.black)
+      if (current_time - shoot_tmr >= shoot_interval):
+         ray = raycast(origin=camera.world_position, direction=camera.forward,
+                       distance=500, ignore=[camera, player, ground, text], debug=False)
+         bullet = Entity(parent=camera, model='cube',
+                         scale=.1, color=color.black)
          bullet.world_parent = scene
-         bullet.animate_position(bullet.position+(bullet.forward*1000)*time.dt*900, curve=curve.linear, duration=10)
+         bullet.animate_position(
+             bullet.position+(bullet.forward*1000)*time.dt*900, curve=curve.linear, duration=10)
          destroy(bullet, delay=7)
-         deagle = Audio("assets/sounds/deagle.mp3", autoplay=True, volume = 0.55)
-         if ray.hit and ray.entity != wall:
+         deagle_sound = Audio("assets/sounds/deagle.mp3", autoplay=True, volume=0.55)
+         if (ray.hit and ray.entity != wall):
             data["player"]["oponent_health"] -= 20
             destroy(bullet, delay=0.1)
-         if ray.entity == wall:
+         if (ray.entity == wall):
             destroy(bullet, delay=0.1)
          shoot_tmr = current_time
 
@@ -168,6 +182,7 @@ def sit():
       player.jump_height = 0
    else:
       player.jump_height = 1.5
+
 
 def stay():
    global render_sit_flag
@@ -185,24 +200,49 @@ def start_client():
    global solo
 
    if (not solo):
-      sio.connect('http://192.168.178.50:3000/')
+      sio.connect('http://192.168.178.50:3000')
       sio.wait()
+
+# @sio.on('status')
+# def status(status_code):
+#    status = json.loads(status_code)
 
 @sio.on('disconnect')
 def on_disconnect():
    print(Fore.RED + 'Disconnected.')
 
 @sio.on('new')
-def new_conn(player_count):
-   arab.show()
-   text.show()
-   data["player"]["oponent_health"] = 100
+def new_conn(data):
+   parsed_data = json.loads(data)
+   # e = Entity(scale=.028, rotation=(-90, 0, 0))
+   # actor = Actor("assets/models/t.glb")
+   # actor.reparentTo(e)
+   # e.position = Vec3(9999, 9999, 9999)
+   # players[parsed_data] = e
+   print(Fore.GREEN + "NEW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + Fore.WHITE)
 
-@sio.on('del')
-def dis_conn(player_count):
-   arab.hide()
-   text.hide()
-   data["player"]["oponent_health"] = 100
+@sio.on('joined')
+def joined(player_count):
+   print(Fore.GREEN + "joined!!" + Fore.WHITE)
+   print(Fore.GREEN + str(player_count) + Fore.WHITE)
+   print(Fore.GREEN + str(data["socket"]["num"]) + Fore.WHITE)
+   print(Fore.GREEN + str(players) + Fore.WHITE)
+
+# @sio.on('del')
+# def dis_conn(player_count):
+
+def whats_my_number():
+   global solo
+   num_flag = False
+
+   if (not num_flag and not solo):
+      sio.emit('wmn')
+      num_flag = True
+
+@sio.on("ynmi")
+def num_response(num):
+   data["socket"]["num"] = int(num)
+   join_room()
 
 def join_room():
    global join_flag
@@ -212,6 +252,11 @@ def join_room():
       sio.emit("join", json.dumps(data))
       join_flag = True
 
+def conn_counter_reset():
+   global conn_counter
+
+   conn_counter = 0
+
 @sio.on("server_res")
 def get_data(res):
    global phantom_x
@@ -219,9 +264,13 @@ def get_data(res):
    global phantom_z
    global rot
    global solo
+   global conn_counter
 
    if (not solo):
       decoded_data = json.loads(res)
+
+      # print(Fore.GREEN + str(players) + Fore.WHITE)
+      # print(Fore.GREEN + str(decoded_data["socket"]["num"]) + Fore.WHITE)
 
       phantom_x = decoded_data["data"]["cord"]["x"]
       phantom_y = decoded_data["data"]["cord"]["y"]
@@ -230,43 +279,62 @@ def get_data(res):
       rot = decoded_data["data"]["dir"]
 
       data["player"]["health"] = decoded_data["player"]["oponent_health"]
+      fantom_number = decoded_data["socket"]["num"]
+
+      if (type(players[decoded_data["socket"]["num"]]) == int and conn_counter == 0):
+         conn_counter += 1
+         e = Entity(scale=.028, rotation=(-90, 0, 0))
+         actor = Actor("assets/models/t.glb")
+         actor.reparentTo(e)
+         e.hide()
+         players[decoded_data["socket"]["num"]] = e
+         print("NOT ENTITY", conn_counter)
+         invoke(conn_counter_reset, delay=10)
+      else:
+         e = players[fantom_number]
+         
+         e.show()
+
+         # print(Fore.GREEN + str(e) + Fore.WHITE)
+
+         e.position = Vec3(phantom_x, phantom_y, phantom_z)
+         e.rotation_y = rot
 
       if decoded_data["game"]["death"] == True:
-         ez.volume *= 2
          ez.play()
          send_kill(decoded_data["player"]["nickname"])
          print("death")
 
-      if decoded_data["player"]["color"] == 'green': 
-         if text.color != color.green:
-            text.color = color.green
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'red': 
-         if text.color != color.red:
-            text.color = color.red
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'orange': 
-         if text.color != color.orange:
-            text.color = color.orange
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'yellow': 
-         if text.color != color.yellow:
-            text.color = color.yellow
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'blue': 
-         if text.color != color.blue:
-            text.color = color.blue
-            text.text = decoded_data["player"]["nickname"]
-      elif decoded_data["player"]["color"] == 'purple': 
-         if text.color != color.pink:
-            text.color = color.pink
-            text.text = decoded_data["player"]["nickname"]
-      else: 
-         if text.color != color.white:
-            text.color = color.white
-            text.text = decoded_data["player"]["nickname"]
+      # if decoded_data["player"]["color"] == 'green': 
+      #    if text.color != color.green:
+      #       text.color = color.green
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'red': 
+      #    if text.color != color.red:
+      #       text.color = color.red
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'orange': 
+      #    if text.color != color.orange:
+      #       text.color = color.orange
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'yellow': 
+      #    if text.color != color.yellow:
+      #       text.color = color.yellow
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'blue': 
+      #    if text.color != color.blue:
+      #       text.color = color.blue
+      #       text.text = decoded_data["player"]["nickname"]
+      # elif decoded_data["player"]["color"] == 'purple': 
+      #    if text.color != color.pink:
+      #       text.color = color.pink
+      #       text.text = decoded_data["player"]["nickname"]
+      # else: 
+      #    if text.color != color.white:
+      #       text.color = color.white
+      #       text.text = decoded_data["player"]["nickname"]
 
-      text.position = Vec3(phantom_x, phantom_y + 2.25, phantom_z)
+      # text.position = Vec3(phantom_x, phantom_y + 2.25, phantom_z)
 
       # print(Fore.GREEN + "GET", Fore.WHITE)
 
@@ -362,6 +430,13 @@ if __name__ == '__main__':
       data["player"]["nickname"] = parsed_data["settings"]["nickname"]
       data["player"]["color"] = parsed_data["settings"]["color"]
 
+      resolution = parsed_data["_game_"][2]["graphic"]["graphic-resolution"]
+      ip = parsed_data["_game_"][1]["connect-addr"]
+
+      window.vsync = bool(parsed_data["_game_"][2]["graphic"]["VSync"])
+      window.fullscreen = bool(parsed_data["_game_"][2]["graphic"]["Fullscreen"])
+      window.fps_counter.enabled = bool(parsed_data["_game_"][2]["graphic"]["show-FPS"])
+
       if (parsed_data["settings"]["crosshair"]["size"] != None):
          player.cursor.scale = float(parsed_data["settings"]["crosshair"]["size"])
 
@@ -374,19 +449,14 @@ if __name__ == '__main__':
             cursor_path = cursor_path.replace("'", "")
             player.cursor.texture = cursor_path
 
-   text = Text(parrent=scene, origin=(0, -0.5), billboard=True, scale=3.2)
+   text = Text(parrent=scene, origin=(0, -0.5), billboard=True, scale=2.3)
    chat = Text(parrent=camera, scale=1, color=color.red, origin=(-0.6, -16.3))
 
    ground = Entity(scale=100, model='plane', texture='grass', collider='box')
    block = Entity(scale=1, model='cube', collider='box', position=Vec3(5, 2, 5))
    wall = Entity(scale=7, scale_x=1, model='cube', collider='box', position=Vec3(7, 2, 5))
-   arab = Entity(scale=.028, rotation=(-90, 0, 0))
-   actor = Actor("assets/models/t.glb")
-   actor.reparentTo(arab)
-   arab.hide()
-   text.hide()
 
-   sun = SunLight(direction=(-0.7, -0.9, 0.5), resolution=3955, player=player)
+   sun = SunLight(direction=(-0.7, -0.9, 0.5), resolution=resolution, player=player)
    ambient = AmbientLight(color=Vec4(0.485, 0.5, 0.63, 0) * 1.5)
 
    render.setShaderAuto()

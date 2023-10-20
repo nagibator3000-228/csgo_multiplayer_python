@@ -13,7 +13,7 @@ const os = require('os');
 
 app.use(cors({origin: '*'}));
 
-var anti_cheat = false;
+var anti_cheat = true;
 
 var save_to_cloud = true;
 
@@ -76,6 +76,11 @@ io.on("connection", (socket) => {
    sockets.count_of_sockets = connectionsCount;
    console.log(`[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "sockets: ", sockets.sockets, "\n" + `[${date.getDate().toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${date.getFullYear()} | ${date.getHours().toString().padStart(2, '0')} : ${date.getMinutes().toString().padStart(2, '0')} : ${date.getSeconds().toString().padStart(2, '0')}]` + " " + "players online: ", " ", sockets.count_of_sockets);
 
+   socket.on("wmn", () => {
+      socket.join(socket.id);
+      io.to(socket.id).emit("ynmi", JSON.stringify(sockets.count_of_sockets));
+   });
+
    socket.on("join", async (data) => {
       try {
          let parsed_data = JSON.parse(data);
@@ -90,11 +95,10 @@ io.on("connection", (socket) => {
             return;
          }
          socket.join(parsed_data.socket.room);
-         socket.join(socket.id);
          const room = io.sockets.adapter.rooms.get(parsed_data.socket.room);
          const playerCount = room ? room.size : 0;
          if (playerCount >= 2) {
-            io.in(parsed_data.socket.room).emit('new', sockets.count_of_sockets);
+            io.to(parsed_data.socket.room).emit('new', JSON.stringify(parsed_data.socket.num));
          }
          io.to(socket.id).emit('joined', sockets.count_of_sockets);
       } catch (e) {
@@ -164,7 +168,7 @@ io.on("connection", (socket) => {
    });
 });
 
-http.listen(3000, '192.168.178.50', () => {
+http.listen(5000, () => {
    console.log("starting...");
    try {
       let date = new Date();
