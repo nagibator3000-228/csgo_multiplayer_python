@@ -13,7 +13,7 @@ const os = require('os');
 
 app.use(cors({origin: '*'}));
 
-var anti_cheat = true;
+var anti_cheat = false;
 
 var save_to_cloud = true;
 
@@ -78,7 +78,7 @@ io.on("connection", (socket) => {
 
    socket.on("wmn", () => {
       socket.join(socket.id);
-      io.to(socket.id).emit("ynmi", JSON.stringify(sockets.count_of_sockets));
+      io.to(socket.id).emit("ynmi", JSON.stringify(sockets.count_of_sockets-1));
    });
 
    socket.on("join", async (data) => {
@@ -168,7 +168,7 @@ io.on("connection", (socket) => {
    });
 });
 
-http.listen(5000, () => {
+http.listen(3000, '192.168.178.50', () => {
    console.log("starting...");
    try {
       let date = new Date();

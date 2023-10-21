@@ -3104,3 +3104,166 @@ crypto main hash: 4543b4f79b9ed9ea2c9701b839b3e36889133a0814e8d492bb764441d0add8
 
 [20.10.2023 | 22 : 53 : 51] sockets: []
 [20.10.2023 | 22 : 53 : 51] players online: 0
+
+[20.10.2023 | 23 : 30 : 56] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: 4543b4f79b9ed9ea2c9701b839b3e36889133a0814e8d492bb764441d0add8b2
+
+[20.10.2023 | 23 : 32 : 25] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: 4543b4f79b9ed9ea2c9701b839b3e36889133a0814e8d492bb764441d0add8b2
+
+[20.10.2023 | 23 : 33 : 18] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+
+crypto main hash: 4543b4f79b9ed9ea2c9701b839b3e36889133a0814e8d492bb764441d0add8b2
+
+[20.10.2023 | 23 : 33 : 27] sockets: ["R5HCMTfP2T94R7SpAAAB"]
+[20.10.2023 | 23 : 33 : 27] players online: 1
+
+[20.10.2023 | 23 : 33 : 37] sockets: ["R5HCMTfP2T94R7SpAAAB","VPqghw3Lgjw6BTs_AAAD"]
+[20.10.2023 | 23 : 33 : 37] players online: 2
+
+[20.10.2023 | 23 : 36 : 20] sockets: ["R5HCMTfP2T94R7SpAAAB"]
+[20.10.2023 | 23 : 36 : 20] players online: 1
+
+[20.10.2023 | 23 : 36 : 28] sockets: []
+[20.10.2023 | 23 : 36 : 28] players online: 0
+
+[21.10.2023 | 12 : 00 : 00] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+[21.10.2023 | 12 : 00 : 00] !WARNING! Crypto Anti-Cheat is OFF!
+crypto main hash: 4543b4f79b9ed9ea2c9701b839b3e36889133a0814e8d492bb764441d0add8b2
+
+[21.10.2023 | 12 : 02 : 44] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+[21.10.2023 | 12 : 02 : 44] !WARNING! Crypto Anti-Cheat is OFF!
+crypto main hash: 4543b4f79b9ed9ea2c9701b839b3e36889133a0814e8d492bb764441d0add8b2
+
+[21.10.2023 | 12 : 06 : 09] sockets: []
+[21.10.2023 | 12 : 06 : 09] players online: 0
+
+[21.10.2023 | 12 : 06 : 14] sockets: ["4ociPoSKnQhggWkUAAAD"]
+[21.10.2023 | 12 : 06 : 14] players online: 1
+
+[21.10.2023 | 12 : 06 : 24] sockets: ["4ociPoSKnQhggWkUAAAD","1b8Zf3SH0SXpUXGOAAAF"]
+[21.10.2023 | 12 : 06 : 24] players online: 2
+
+[21.10.2023 | 12 : 06 : 46] sockets: ["1b8Zf3SH0SXpUXGOAAAF"]
+[21.10.2023 | 12 : 06 : 46] players online: 1
+
+[21.10.2023 | 12 : 06 : 47] sockets: []
+[21.10.2023 | 12 : 06 : 47] players online: 0
+
+[21.10.2023 | 12 : 07 : 00] sockets: ["riH8S4mHhHzZucPOAAAH"]
+[21.10.2023 | 12 : 07 : 00] players online: 1
+
+[21.10.2023 | 12 : 07 : 12] sockets: ["riH8S4mHhHzZucPOAAAH","wT4yT9XYTCg2QHWwAAAJ"]
+[21.10.2023 | 12 : 07 : 12] players online: 2
+
+[21.10.2023 | 12 : 07 : 36] sockets: ["riH8S4mHhHzZucPOAAAH","wT4yT9XYTCg2QHWwAAAJ","iydRDuePN0DcjA-HAAAL"]
+[21.10.2023 | 12 : 07 : 36] players online: 3
+
+[21.10.2023 | 12 : 08 : 33] sockets: ["wT4yT9XYTCg2QHWwAAAJ","iydRDuePN0DcjA-HAAAL"]
+[21.10.2023 | 12 : 08 : 33] players online: 2
+
+[21.10.2023 | 12 : 08 : 34] sockets: ["iydRDuePN0DcjA-HAAAL"]
+[21.10.2023 | 12 : 08 : 34] players online: 1
+
+[21.10.2023 | 12 : 08 : 36] sockets: []
+[21.10.2023 | 12 : 08 : 36] players online: 0
+
+[21.10.2023 | 12 : 10 : 21] sockets: ["Cifil_Jx6vziDt1FAAAN"]
+[21.10.2023 | 12 : 10 : 21] players online: 1
+
+[21.10.2023 | 12 : 10 : 31] sockets: ["Cifil_Jx6vziDt1FAAAN","R0ojDRARJ2M5kyg7AAAP"]
+[21.10.2023 | 12 : 10 : 31] players online: 2
+
+[21.10.2023 | 12 : 10 : 58] sockets: ["Cifil_Jx6vziDt1FAAAN","R0ojDRARJ2M5kyg7AAAP","YWqI6pXYcQ1daTbMAAAR"]
+[21.10.2023 | 12 : 10 : 58] players online: 3
+
+[21.10.2023 | 12 : 11 : 53] sockets: ["R0ojDRARJ2M5kyg7AAAP","YWqI6pXYcQ1daTbMAAAR"]
+[21.10.2023 | 12 : 11 : 53] players online: 2
+
+[21.10.2023 | 12 : 11 : 54] sockets: ["YWqI6pXYcQ1daTbMAAAR"]
+[21.10.2023 | 12 : 11 : 54] players online: 1
+
+[21.10.2023 | 12 : 11 : 55] sockets: []
+[21.10.2023 | 12 : 11 : 55] players online: 0
+
+[21.10.2023 | 12 : 13 : 12] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+[21.10.2023 | 12 : 13 : 12] !WARNING! Crypto Anti-Cheat is OFF!
+crypto main hash: 4543b4f79b9ed9ea2c9701b839b3e36889133a0814e8d492bb764441d0add8b2
+
+[21.10.2023 | 12 : 13 : 23] sockets: ["Kf5XLXvowCH42s0hAAAB"]
+[21.10.2023 | 12 : 13 : 23] players online: 1
+
+[21.10.2023 | 12 : 13 : 34] sockets: ["Kf5XLXvowCH42s0hAAAB","28wQ5KJR24oukF3RAAAD"]
+[21.10.2023 | 12 : 13 : 34] players online: 2
+
+[21.10.2023 | 12 : 14 : 48] sockets: ["28wQ5KJR24oukF3RAAAD"]
+[21.10.2023 | 12 : 14 : 48] players online: 1
+
+[21.10.2023 | 12 : 14 : 50] sockets: []
+[21.10.2023 | 12 : 14 : 50] players online: 0
+
+[21.10.2023 | 12 : 16 : 05] sockets: ["Q0oPKLuI_i2klcaqAAAF"]
+[21.10.2023 | 12 : 16 : 05] players online: 1
+
+[21.10.2023 | 12 : 16 : 15] sockets: ["Q0oPKLuI_i2klcaqAAAF","YT_qAiYJCRNY3f4JAAAH"]
+[21.10.2023 | 12 : 16 : 15] players online: 2
+
+[21.10.2023 | 12 : 16 : 35] sockets: ["Q0oPKLuI_i2klcaqAAAF"]
+[21.10.2023 | 12 : 16 : 35] players online: 1
+
+[21.10.2023 | 12 : 16 : 40] sockets: []
+[21.10.2023 | 12 : 16 : 40] players online: 0
+
+[21.10.2023 | 12 : 24 : 26] sockets: ["fdte86_6o32671pSAAAJ"]
+[21.10.2023 | 12 : 24 : 26] players online: 1
+
+[21.10.2023 | 12 : 24 : 36] sockets: ["fdte86_6o32671pSAAAJ","y2liXuR7Xokc3NTKAAAL"]
+[21.10.2023 | 12 : 24 : 36] players online: 2
+
+[21.10.2023 | 12 : 24 : 53] sockets: ["y2liXuR7Xokc3NTKAAAL"]
+[21.10.2023 | 12 : 24 : 53] players online: 1
+
+[21.10.2023 | 12 : 25 : 16] sockets: []
+[21.10.2023 | 12 : 25 : 16] players online: 0
+
+[21.10.2023 | 12 : 25 : 18] sockets: ["BfQIE9tHm9Ags8nfAAAN"]
+[21.10.2023 | 12 : 25 : 18] players online: 1
+
+[21.10.2023 | 12 : 25 : 27] sockets: ["BfQIE9tHm9Ags8nfAAAN","woPspmtJO097qyBkAAAP"]
+[21.10.2023 | 12 : 25 : 27] players online: 2
+
+[21.10.2023 | 12 : 25 : 42] sockets: ["woPspmtJO097qyBkAAAP"]
+[21.10.2023 | 12 : 25 : 42] players online: 1
+
+[21.10.2023 | 12 : 25 : 43] sockets: []
+[21.10.2023 | 12 : 25 : 43] players online: 0
+
+[21.10.2023 | 12 : 29 : 04] sockets: ["H67MtsWVExPwPqvPAAAR"]
+[21.10.2023 | 12 : 29 : 04] players online: 1
+
+[21.10.2023 | 12 : 29 : 11] sockets: ["H67MtsWVExPwPqvPAAAR","UI9_iE71gd2GFGUlAAAT"]
+[21.10.2023 | 12 : 29 : 11] players online: 2
+
+[21.10.2023 | 12 : 29 : 21] sockets: ["UI9_iE71gd2GFGUlAAAT"]
+[21.10.2023 | 12 : 29 : 21] players online: 1
+
+[21.10.2023 | 12 : 29 : 21] sockets: []
+[21.10.2023 | 12 : 29 : 21] players online: 0
+
+[21.10.2023 | 12 : 30 : 10] sockets: ["h-nHUnZTUA9CGqpEAAAV"]
+[21.10.2023 | 12 : 30 : 10] players online: 1
+
+[21.10.2023 | 12 : 30 : 17] sockets: ["h-nHUnZTUA9CGqpEAAAV","O7r2TbByNyzOhoTmAAAX"]
+[21.10.2023 | 12 : 30 : 17] players online: 2
+
+[21.10.2023 | 12 : 30 : 24] sockets: ["O7r2TbByNyzOhoTmAAAX"]
+[21.10.2023 | 12 : 30 : 24] players online: 1
+
+[21.10.2023 | 12 : 30 : 29] sockets: []
+[21.10.2023 | 12 : 30 : 29] players online: 0
+
+[21.10.2023 | 22 : 43 : 49] Server started on port 3000 | system x64 cpu 8 | crypto hash type SHA256
+[21.10.2023 | 22 : 43 : 49] !WARNING! Crypto Anti-Cheat is OFF!
+crypto main hash: 4543b4f79b9ed9ea2c9701b839b3e36889133a0814e8d492bb764441d0add8b2

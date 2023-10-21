@@ -20,7 +20,7 @@ window.cog_menu = False
 
 init()
 
-players = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+players = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 class SunLight(Entity):
    def __init__(self, direction, resolution, player):
@@ -58,6 +58,7 @@ shoot_interval = 0.26
 render_sit_flag = False
 
 conn_counter = 0
+player_exist = False
 
 resolution = 3955
 
@@ -162,7 +163,7 @@ def update():
          bullet.animate_position(
              bullet.position+(bullet.forward*1000)*time.dt*900, curve=curve.linear, duration=10)
          destroy(bullet, delay=7)
-         deagle_sound = Audio("assets/sounds/deagle.mp3", autoplay=True, volume=0.55)
+         deagle_sound = Audio("assets/sounds/deagle.mp3", autoplay=True, volume=0.6)
          if (ray.hit and ray.entity != wall):
             data["player"]["oponent_health"] -= 20
             destroy(bullet, delay=0.1)
@@ -182,7 +183,6 @@ def sit():
       player.jump_height = 0
    else:
       player.jump_height = 1.5
-
 
 def stay():
    global render_sit_flag
@@ -213,13 +213,27 @@ def on_disconnect():
 
 @sio.on('new')
 def new_conn(data):
+   global player_exist
+   global conn_counter
+
    parsed_data = json.loads(data)
    # e = Entity(scale=.028, rotation=(-90, 0, 0))
    # actor = Actor("assets/models/t.glb")
    # actor.reparentTo(e)
    # e.position = Vec3(9999, 9999, 9999)
    # players[parsed_data] = e
+   print(parsed_data)
    print(Fore.GREEN + "NEW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + Fore.WHITE)
+   if (type(players[parsed_data]) == int and conn_counter == 0):
+      conn_counter = 1
+      e = Entity(scale=.028, rotation=(-90, 0, 0))
+      actor = Actor("assets/models/t.glb")
+      actor.reparentTo(e)
+      e.hide()
+      players[parsed_data] = e
+      print("NOT ENTITY", conn_counter)
+      player_exist = True
+      invoke(conn_counter_reset, delay=1)
 
 @sio.on('joined')
 def joined(player_count):
@@ -256,6 +270,7 @@ def conn_counter_reset():
    global conn_counter
 
    conn_counter = 0
+   print(conn_counter)
 
 @sio.on("server_res")
 def get_data(res):
@@ -265,6 +280,7 @@ def get_data(res):
    global rot
    global solo
    global conn_counter
+   global player_exist
 
    if (not solo):
       decoded_data = json.loads(res)
@@ -281,16 +297,7 @@ def get_data(res):
       data["player"]["health"] = decoded_data["player"]["oponent_health"]
       fantom_number = decoded_data["socket"]["num"]
 
-      if (type(players[decoded_data["socket"]["num"]]) == int and conn_counter == 0):
-         conn_counter += 1
-         e = Entity(scale=.028, rotation=(-90, 0, 0))
-         actor = Actor("assets/models/t.glb")
-         actor.reparentTo(e)
-         e.hide()
-         players[decoded_data["socket"]["num"]] = e
-         print("NOT ENTITY", conn_counter)
-         invoke(conn_counter_reset, delay=10)
-      else:
+      if (player_exist):
          e = players[fantom_number]
          
          e.show()
@@ -300,10 +307,10 @@ def get_data(res):
          e.position = Vec3(phantom_x, phantom_y, phantom_z)
          e.rotation_y = rot
 
-      if decoded_data["game"]["death"] == True:
-         ez.play()
-         send_kill(decoded_data["player"]["nickname"])
-         print("death")
+         if decoded_data["game"]["death"] == True:
+            ez.play()
+            send_kill(decoded_data["player"]["nickname"])
+            print("death")
 
       # if decoded_data["player"]["color"] == 'green': 
       #    if text.color != color.green:
@@ -426,23 +433,24 @@ if __name__ == '__main__':
 
    with open("settings.json", "r") as file:
       parsed_data = json.load(file)
-      data["player"]["team"] = parsed_data["settings"]["team"]
-      data["player"]["nickname"] = parsed_data["settings"]["nickname"]
-      data["player"]["color"] = parsed_data["settings"]["color"]
+      data["player"]["team"] = str(parsed_data["settings"]["team"])
+      data["player"]["nickname"] = str(parsed_data["settings"]["nickname"])
+      data["player"]["color"] = str(parsed_data["settings"]["color"])
 
-      resolution = parsed_data["_game_"][2]["graphic"]["graphic-resolution"]
-      ip = parsed_data["_game_"][1]["connect-addr"]
+      ip = str(parsed_data["_game_"][1]["connect-addr"])
 
-      window.vsync = bool(parsed_data["_game_"][2]["graphic"]["VSync"])
-      window.fullscreen = bool(parsed_data["_game_"][2]["graphic"]["Fullscreen"])
-      window.fps_counter.enabled = bool(parsed_data["_game_"][2]["graphic"]["show-FPS"])
+      resolution = int(parsed_data["_game_"][2]["graphic-resolution"])
+
+      window.vsync = bool(parsed_data["_game_"][2]["VSync"])
+      window.fullscreen = bool(parsed_data["_game_"][2]["Fullscreen"])
+      window.fps_counter.enabled = bool(parsed_data["_game_"][2]["show-FPS"])
 
       if (parsed_data["settings"]["crosshair"]["size"] != None):
          player.cursor.scale = float(parsed_data["settings"]["crosshair"]["size"])
 
       if (parsed_data["settings"]["crosshair"]["type"] != None):
          player.cursor.model = 'quad'
-         if parsed_data["settings"]["crosshair"]["type"] == 0:
+         if (parsed_data["settings"]["crosshair"]["type"] == 0):
             player.cursor.model = 'sphere'
          else:
             cursor_path = str("assets/models/cursor/{!r}").format(parsed_data["global"]["crosshair_paths"][int(parsed_data["settings"]["crosshair"]["type"])])

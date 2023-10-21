@@ -17,12 +17,10 @@
          "connect-addr": "http://192.168.178.50:3000/"
       },
       {
-         "graphic": {
-            "VSync": false,
-            "Fullscreen": false,
-            "graphic-resolution": 3955,
-            "show-FPS": true
-         }
+         "VSync": false,
+         "Fullscreen": false,
+         "graphic-resolution": 3955,
+         "show-FPS": true
       }
    ],
    "global": {
